@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+<androidx.core.widget.NestedScrollView android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:scrollbars="vertical"
+    android:fillViewport="true"
+    >
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    tools:context=".AddPrescriptionActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="ADD PRESCRIPTION DETAILS"
+        android:textColor="@color/colorDarkBlue"
+        android:background="@color/colorWhite"
+        android:layout_gravity="center_horizontal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        android:id="@+id/TvaddPrescriptionLable"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@color/colorWhite">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="patient Name*"
+        android:textColor="@color/colorBlue"
+        android:textColorHint="@color/colorPurple"
+        android:id="@+id/patientNameET"
+        android:inputType="text"
+        android:maxLines="1"
+
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="RegNo*"
+        android:textColor="@color/colorBlue"
+        android:textColorHint="@color/colorPurple"
+        android:id="@+id/RegNoET"
+        android:inputType="text"
+        android:maxLines="1"
+
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:hint="Intake Duration in DAYS*"
+        android:id="@+id/prescpDurationET"
+        android:inputType="number"
+        android:textColor="@color/colorBlue"
+        android:textColorHint="@color/colorPurple"
+        android:maxLines="1"
+
+        />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/NoOfMedcneInPrescrptnET"
+            android:hint="No of Medicines*"
+            android:inputType="number"
+            android:textColor="@color/colorBlue"
+            android:textColorHint="@color/colorPurple"
+
+            />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="Todays Date:"
+        android:textColor="@color/colorDarkBlue"
+        android:background="@color/colorWhite"
+        android:id="@+id/TvTodaysDate"/>
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/prescrptnDatePcr"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+        android:layout_marginLeft="5dp"
+
+        />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADD NEW PRESCRIPTION"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:id="@+id/addPrescrptnBtn"
+        />
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="PRESCRIPTIONS"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorDarkBlue"
+        android:background="@color/colorWhite"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/TvPrescriptionsLabel"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="true"
+        android:id="@+id/addedPrescriptionList"/>
+</LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

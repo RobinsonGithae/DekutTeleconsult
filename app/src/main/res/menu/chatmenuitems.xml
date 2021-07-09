@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="Video call"
+        android:id="@+id/itemvideocall"
+        android:icon="@drawable/ic_video_call"
+        app:showAsAction="ifRoom"
+        >
+    </item>
+
+
+    <item
+        android:title="Clear chat"
+        android:id="@+id/clearChat"
+        app:showAsAction="never">
+    </item>
+
+    <item
+        android:title="Search"
+        android:id="@+id/searchChat"
+        app:showAsAction="never">
+    </item>
+
+    <item
+        android:title="Wallpaper"
+        android:id="@+id/ChatWallpaper"
+        app:showAsAction="never">
+    </item>
+
+</menu>

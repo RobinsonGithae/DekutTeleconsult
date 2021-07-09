@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegisterAsActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGISTER"
+        android:textStyle="bold|italic"
+        android:id="@+id/TVRegister"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:id="@+id/BtnAsDoctorSignup"
+        android:text="As Doctor"
+        android:textStyle="bold|italic"
+        android:textColor="@color/colorWhite"
+        android:layout_gravity="center_horizontal"
+
+        />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/BtnAsStudentSignup"
+        android:text="As Student"
+        android:textStyle="bold|italic"
+        android:textColor="@color/colorWhite"
+        android:layout_gravity="center_horizontal"
+        />
+
+</LinearLayout>

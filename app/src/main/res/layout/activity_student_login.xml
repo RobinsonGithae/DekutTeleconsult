@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".StudentLoginActivity">
+
+
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
+
+
+        <LinearLayout
+            android:id="@+id/signupcontainer"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:background="@color/colorWhite"
+            android:layout_marginLeft="5dp"
+            android:padding="50dp"
+            android:layout_marginStart="5dp">
+
+            <TextView
+                android:id="@+id/loginStudTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="LOGIN STUDENT"
+                android:background="@color/colorWhite"
+                android:textColor="@color/colorDarkBlue"
+                android:textSize="25sp"
+
+                />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/StudLoginEmailETLyt"
+                style="@style/TextInputlayoutBorderColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:hint="Email"
+                app:endIconMode="clear_text"
+                app:errorTextColor="@color/colorGreen"
+                app:helperText="required*"
+                app:helperTextTextColor="@color/colorGreen"
+                app:hintTextColor="@color/colorGreen"
+                app:startIconDrawable="@drawable/ic_account"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ETStudLoginEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ETLytStudLoginpasswordETLyt"
+                style="@style/TextInputlayoutBorderColor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:focusable="true"
+                android:hint="Password"
+
+                app:endIconMode="password_toggle"
+                app:errorTextColor="@color/colorGreen"
+                app:hintTextColor="@color/colorGreen"
+                app:startIconDrawable="@drawable/ic_password">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ETStudloginPswd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textColorHighlight="#FFFFFF" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/StudNotRegTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="35dp"
+                android:fontFamily="cursive"
+                android:text="Create Account"
+                android:background="@color/colorWhite"
+                android:textColor="@color/colorDarkBlue"
+                android:textSize="20sp"
+                android:textStyle="italic|bold" />
+
+
+            <Button
+                android:id="@+id/btnStdLogin"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="Login"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="25sp"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:id="@+id/StudforgotPasswrdTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="cursive"
+                android:text="Forgot password?"
+                android:textColor="@color/colorDarkBlue"
+                android:textSize="20sp"
+                android:background="@color/colorWhite"
+                android:textStyle="italic|bold" />
+
+
+            <ProgressBar
+                android:id="@+id/StudLoginProgBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:visibility="invisible"
+
+                />
+        </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+    </LinearLayout>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:scrollbars="vertical|horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhite"
+    android:orientation="horizontal"
+
+
+    android:layout_gravity="center_horizontal">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   android:id="@+id/emegencyLinearLyt"
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:background="@color/colorWhite"
+    >
+
+
+
+            <TextView
+                android:id="@+id/emergencyID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:text="Emergency ID"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:layout_toRightOf="@id/btnTrackEmergency"
+
+                />
+
+            <TextView
+                android:id="@+id/emergencyLat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="11dp"
+                android:layout_marginRight="11dp"
+                android:layout_toRightOf="@id/emergencyID"
+                android:background="@color/colorWhite"
+                android:text="Lat"
+
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                />
+    <TextView
+        android:id="@+id/emergencyLong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+        android:layout_toRightOf="@id/emergencyID"
+        android:background="@color/colorWhite"
+        android:text="Long"
+
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        />
+    <TextView
+        android:id="@+id/emergencyStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+
+        android:background="@color/colorWhite"
+        android:text="Status"
+
+        android:textColor="@color/colorGreen"
+        android:textSize="20sp"
+
+
+       />
+
+
+    <Button
+        android:id="@+id/btnTrackEmergency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginLeft="5dp"
+        android:background="@color/colorGrey"
+        android:text="track"
+       android:layout_gravity="right"
+        android:textSize="20sp"
+        android:layout_marginBottom="5dp"
+
+        android:layout_alignParentRight="true"
+        />
+</LinearLayout>
+
+
+
+
+</RelativeLayout>
+</ScrollView>

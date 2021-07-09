@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginWithActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:gravity="center">
+
+
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="LOGIN WITH"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorWhite"
+
+        />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/withPasswordBtn"
+        android:text="password"
+        android:textColor="@color/colorWhite"
+        android:layout_marginTop="5dp"
+
+        />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/withPinBtn"
+        android:text="PIN"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/colorWhite"
+
+        />
+    </LinearLayout>
+</LinearLayout>

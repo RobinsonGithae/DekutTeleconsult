@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DoctorSignupActivity"
+    android:orientation="vertical" >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGISTER DOCTOR"
+        android:textSize="25sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/colorWhite"
+        android:id="@+id/registDocTV"
+
+        />
+
+    <LinearLayout
+        android:id="@+id/signupcontainer"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"
+        android:padding="15dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputlayoutBorderColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:id="@+id/DocSignUpusrnmeET"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:hint="Username"
+            app:endIconMode="clear_text"
+            app:errorTextColor="@color/colorGreen"
+            app:helperText="required*"
+            app:helperTextTextColor="@color/colorGreen"
+            app:hintTextColor="@color/colorGreen"
+            app:startIconDrawable="@drawable/ic_account"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ETDocsignupUsrnm"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputlayoutBorderColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:id="@+id/DocSignUpEmailETLyt"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:hint="Email"
+            app:endIconMode="clear_text"
+            app:errorTextColor="@color/colorGreen"
+            app:helperText="required*"
+            app:helperTextTextColor="@color/colorGreen"
+            app:hintTextColor="@color/colorGreen"
+            app:startIconDrawable="@drawable/ic_account"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ETDocsignupEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputlayoutBorderColor"
+            android:id="@+id/ETLytDocSgnUppasswordETLyt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:focusable="true"
+            android:hint="Password"
+
+            app:endIconMode="password_toggle"
+            app:errorTextColor="@color/colorGreen"
+            app:hintTextColor="@color/colorGreen"
+            app:startIconDrawable="@drawable/ic_password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ETDocsgnupPswd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColorHighlight="#FFFFFF" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputlayoutBorderColor"
+            android:layout_width="match_parent"
+            android:id="@+id/ETLytDocSgnUpCnfrmPsswrd"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:hint="Confirm password"
+            app:endIconMode="password_toggle"
+            app:errorTextColor="@color/colorRed"
+            app:helperText="required*"
+            app:helperTextTextColor="@color/colorGreen"
+            app:hintTextColor="@color/colorGreen"
+
+            app:startIconDrawable="@drawable/ic_password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ETDocSignupconfirmPswrd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnDocSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="SIGN UP"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp"
+            android:textStyle="bold"
+
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

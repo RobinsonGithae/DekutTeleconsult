@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+
+
+
+    >
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profileImageItemRight"
+            android:src="@mipmap/ic_launcher_round"
+            android:visibility="invisible"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_chat_item_right"
+            android:text="Hello"
+            android:textColor="@color/colorWhite"
+            android:padding="8dp"
+            android:id="@+id/actualMessageTv"
+            android:layout_alignParentEnd="true"
+
+            android:layout_alignParentRight="true" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="seen"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/seenTv"
+            android:layout_below="@+id/actualMessageTv"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true" />
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

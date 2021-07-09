@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">DekutTeleconsult</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+
+    <string name="google_maps_key">AIzaSyALtGHBEeLu36rSoVEdI4uW-lwWuvi97QY</string>
+    <string name="agora_app_id">2b9e73d7d83848a1884afe449a6fe1ab</string>
+    <string name="agora_access_token">0062b9e73d7d83848a1884afe449a6fe1abIABUIwRRfLbJz3FhMT7eyTHn8ndnKo2WXpfUqlP1nZyIheIVUyEAAAAAEABlU0aLjxTNYAEAAQCOFM1g </string>
+
+
+    <string name="agora_app_secret">1d33695a66294493845607953387418f</string>
+
+
+    <string name="medicnprompt">Pick medicine</string>
+    <string name="doseunitsprompt">Select Units</string>
+    <string name="drugtypeprompt">Select Drug type</string>
+
+    <string-array name="medicines_arrays">
+        <item> Paracetamol 500mg </item>
+        <item> Actal 500mg </item>
+        <item> Cephalexin 350mg </item>
+        <item> Amoxil 200mg </item>
+        <item> Centizine 22mg </item>
+        <item> Brufen 400mg </item>
+        <item> Diclofenac 55mg </item>
+        <item> Vitamin Syrup 100ml </item>
+        <item> secnidzole 474mg </item>
+        <item> Coartem 75mg </item>
+    </string-array>
+
+
+    <string-array name="dose_units_arrays">
+        <item>tablet</item>
+        <item>mg</item>
+        <item>ml</item>
+        <item> g </item>
+    </string-array>
+
+
+    <string-array name="drug_type_arrays">
+        <item>generic</item>
+        <item>proprietary</item>
+
+    </string-array>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+
+</resources>

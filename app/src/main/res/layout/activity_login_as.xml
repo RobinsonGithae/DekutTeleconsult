@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginAsActivity">
+
+
+    <TextView
+        android:id="@+id/LogInAsTv"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center_horizontal"
+        android:text="LOGIN"
+        android:textSize="50sp"
+        android:gravity="center"
+        android:fontFamily="cursive"
+        android:textColor="#ffffff"
+        />
+
+    <Button
+        android:id="@+id/btnLoginAsDoctor"
+        android:text="AS DOCTOR"
+        android:textSize="16sp"
+        android:textColor="#ffff"
+        android:background="#5353FE"
+        android:textStyle="bold|italic"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+
+
+
+
+        />
+
+
+    <Button
+        android:id="@+id/btnLoginAsStudent"
+        android:text="AS STUDENT"
+        android:background="#5353FE"
+        android:textSize="16sp"
+        android:textColor="#FCF6F6"
+        android:textStyle="bold|italic"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="250dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Create Account"
+        android:clickable="true"
+        android:fontFamily="cursive"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        android:focusable="true" />
+
+
+
+</LinearLayout>

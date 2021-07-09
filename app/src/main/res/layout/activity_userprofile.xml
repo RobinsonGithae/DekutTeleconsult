@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".UserprofileActivity">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/cardviewripple"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        app:contentPadding="15dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="7dp"
+        app:cardBackgroundColor="@color/colorWhite"
+        app:cardPreventCornerOverlap="true"
+        android:id="@+id/CrdProfile"
+        android:layout_gravity="center_horizontal"
+        >
+
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical">
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ProfleCrdRltvLyt"
+            android:background="@color/colorWhite"
+            >
+
+
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:src="@mipmap/ic_launcher_round"
+            android:id="@+id/profileImage"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/usernameTV"
+            android:background="@color/colorWhite"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/colorGrey"
+            android:layout_below="@+id/profileImage"
+            android:text="username"
+
+
+
+            />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/profileUsernameET"
+                android:layout_below="@+id/usernameTV"
+                android:inputType="text"
+                android:hint="Username"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorPurple"
+                 />
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/EmailTV"
+                android:background="@color/colorWhite"
+                android:textSize="25sp"
+                android:textStyle="bold|italic"
+                android:textColor="@color/colorGrey"
+                android:layout_below="@+id/profileUsernameET"
+                android:text="Email"
+                android:drawableLeft="@drawable/ic_account"
+                android:layout_alignParentLeft="true"
+
+                />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/profileEmailET"
+                android:inputType="text"
+                android:layout_below="@+id/EmailTV"
+                android:hint="Email"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorPurple"
+                />
+
+
+
+
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/DateOfBirthTV"
+                android:background="@color/colorWhite"
+                android:textSize="25sp"
+                android:textStyle="bold|italic"
+                android:textColor="@color/colorGrey"
+                android:layout_below="@+id/profileEmailET"
+                android:text="Date Of Birth"
+                android:drawableLeft="@drawable/ic_account"
+                android:layout_alignParentLeft="true"
+
+                />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/profileDateOfBirthET"
+                android:inputType="date"
+                android:layout_below="@+id/DateOfBirthTV"
+                android:hint="Date"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorPurple"
+                />
+
+
+
+
+
+
+        </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <Button
+        android:id="@+id/btnUpdateProfile"
+        android:text="UPDATE PROFILE"
+        android:background="@color/colorPurple"
+        android:textSize="16sp"
+        android:textColor="#FCF6F6"
+        android:textStyle="bold|italic"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="300dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"/>
+
+
+
+
+</LinearLayout>

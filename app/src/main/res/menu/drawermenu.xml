@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <group android:id="@+id/AboutMe">
+
+        <item
+            android:id="@+id/itmProfile"
+            android:icon="@drawable/ic_account"
+            android:iconTint="@color/colorGreen"
+            android:title="profile"/>
+        <item
+            android:id="@+id/itmSignout"
+            android:icon="@drawable/ic_logout"
+            android:iconTint="@color/colorWhite"
+            android:title="sign 0ut"/>
+    </group>
+
+
+
+
+    <group android:id="@+id/AboutApp">
+        <item
+            android:id="@+id/itmRate"
+            android:icon="@drawable/ic_rate"
+            android:iconTint="@color/colorWhite"
+            android:title="Rate App"/>
+        <item
+            android:id="@+id/itmShareApp"
+            android:icon="@drawable/ic_share"
+            android:iconTint="@color/colorWhite"
+            android:title="Share App"/>
+
+    </group>
+
+
+
+
+    <group android:id="@+id/AboutDeveloper">
+        <item
+            android:id="@+id/itmDevelopers"
+            android:icon="@drawable/ic_developer"
+            android:iconTint="@color/colorWhite"
+            android:title="Developer"/>
+    </group>
+
+
+
+    <group android:id="@+id/Settings">
+        <item
+            android:id="@+id/itmSettings"
+            android:icon="@drawable/ic_settings"
+            android:iconTint="@color/colorWhite"
+            android:title="Settings"/>
+    </group>
+
+
+
+</menu>

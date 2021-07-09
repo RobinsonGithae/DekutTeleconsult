@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    tools:context=".PinSettingsActivity">
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pin Enabled"
+        android:textColor="@color/colorBlue"
+        android:layout_gravity="right"
+        android:layout_marginLeft="5dp"/>
+
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="SET PIN"
+        android:layout_gravity="center"
+        android:textSize="40sp"
+        android:textStyle="bold|italic"
+        android:gravity="center_horizontal"
+        android:background="@color/colorWhite"
+        android:textColor="@color/colorDarkBlue"
+        />
+    <com.chaos.view.PinView
+        android:id="@+id/secondPinView"
+        style="@style/PinWidget.PinView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:cursorVisible="true"
+        android:hint="PIN"
+        android:layout_gravity="center"
+        android:textColorHint="@color/colorBlue"
+        android:inputType="numberPassword"
+        android:itemBackground="@color/colorWhite"
+        android:padding="50dp"
+        android:textColor="@color/colorPurple"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cursorColor="@color/colorBlue"
+        app:cursorWidth="2dp"
+        app:hideLineWhenFilled="true"
+        app:itemCount="4"
+        app:itemHeight="48dp"
+        app:itemRadius="4dp"
+        app:itemSpacing="0dp"
+        app:itemWidth="48dp"
+        app:lineColor="@color/colorGreen"
+        app:lineWidth="2dp"
+        app:viewType="rectangle" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+      android:background="@color/colorWhite"
+        android:gravity="center"
+        >
+
+
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+       android:id="@+id/saveNewPinBtn"
+      android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:text="CREATE NEW PIN"/>
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/deletePinBtn"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:text="DELETE PIN"/>
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/ResetPinBtn"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:text="RESET PIN"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    tools:context=".HelpActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEED HELP??"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold|italic"
+       android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorDarkBlue"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="50dp"/>
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Type your Issue here and click SUBMIT incase you are facing system related problem(s)"
+    android:id="@+id/DstbngIssueET"
+    android:maxLines="10"
+    android:textColor="@color/colorDarkBlue"
+    android:textColorHint="@color/colorRed"
+
+    />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSubmitIssue"
+        android:text="SUBMIT"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/colorWhite"
+        />
+</LinearLayout>

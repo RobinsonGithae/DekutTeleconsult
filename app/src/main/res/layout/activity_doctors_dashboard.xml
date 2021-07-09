@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DoctorsDashboardActivity">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:background="@color/colorBlue"
+                    android:columnCount="2"
+                    android:rowCount="3"
+                    android:alignmentMode="alignMargins"
+                    android:padding="10dp"
+
+
+                    >
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="@drawable/cardviewripple"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@color/colorWhite"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="1dp"
+                        app:cardPreventCornerOverlap="true"
+                        android:id="@+id/CrdConsultionsFromStudnt"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:background="@color/colorWhite"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/AllConsultnsFromStudTv"
+                                android:layout_width="175dp"
+                                android:layout_height="150dp"
+
+
+                                android:layout_gravity="center_horizontal"
+
+                                android:background="@color/colorWhite"
+                                android:fontFamily="casual"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:padding="1dp"
+
+
+                                android:text="Consultations"
+                                android:textAlignment="center"
+                                android:textColor="#fdf205fa"
+                                android:textSize="25sp"
+                                android:textStyle="bold|italic" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="15dp"
+                        app:cardCornerRadius="5dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="@drawable/cardviewripple"
+
+                        android:background="@color/colorWhite"
+                        android:layout_weight="0.5"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/prescribeCrd"
+                        >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:background="@color/colorWhite"
+                            android:orientation="vertical"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <TextView
+                                android:id="@+id/prescrbeLabelTV"
+                                android:layout_width="175dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginLeft="2dp"
+                                android:background="@color/colorWhite"
+                                android:fontFamily="casual"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:padding="10dp"
+                                android:text=" Prescribe"
+                                android:textAlignment="center"
+                                android:textColor="#fdf205fa"
+                                android:textSize="25sp"
+
+
+                                android:textStyle="bold|italic"
+                                android:layout_marginStart="2dp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="15dp"
+                        app:cardCornerRadius="5dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="@drawable/cardviewripple"
+
+                        android:background="@color/colorWhite"
+
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/CrdReportedEmergencys"
+                        >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:background="@color/colorWhite"
+                            android:orientation="vertical"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <TextView
+                                android:id="@+id/reportedEmergenciesTV"
+                                android:layout_width="175dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginLeft="2dp"
+                                android:background="@color/colorWhite"
+                                android:fontFamily="casual"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:padding="10dp"
+                                android:text="Reported Emergencies"
+                                android:textAlignment="center"
+                                android:textColor="#fdf205fa"
+                                android:textSize="25sp"
+                                android:textStyle="bold|italic"
+                                android:layout_marginStart="2dp" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="15dp"
+                        app:cardCornerRadius="5dp"
+
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="@drawable/cardviewripple"
+
+                        android:background="@color/colorWhite"
+
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/CrdDocNotifications"
+                        >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:background="@color/colorWhite"
+                            android:orientation="vertical"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <TextView
+                                android:id="@+id/NotificationsTV"
+                                android:layout_width="175dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginLeft="2dp"
+                                android:background="@color/colorWhite"
+                                android:fontFamily="casual"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:padding="10dp"
+
+                                android:text="Notifications"
+                                android:textAlignment="center"
+                                android:textColor="#fdf205fa"
+                                android:textSize="25sp"
+
+
+                                android:textStyle="bold|italic"
+                                android:layout_marginStart="2dp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="15dp"
+                        app:cardCornerRadius="5dp"
+
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="@drawable/cardviewripple"
+
+                        android:background="@color/colorWhite"
+
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/CrdAllPrescriptions"
+                        >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:background="@color/colorWhite"
+                            android:orientation="vertical"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <TextView
+                                android:id="@+id/AllPrescrptnsCrdTV"
+                                android:layout_width="175dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginLeft="2dp"
+                                android:background="@color/colorWhite"
+                                android:fontFamily="casual"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:padding="10dp"
+
+                                android:text="All Prescriptions"
+                                android:textAlignment="center"
+                                android:textColor="#fdf205fa"
+                                android:textSize="25sp"
+
+
+                                android:textStyle="bold|italic"
+                                android:layout_marginStart="2dp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+
+
+
+                </GridLayout>
+
+            </HorizontalScrollView>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "592214091236",
+    "project_id": "dekutteleconsult",
+    "storage_bucket": "dekutteleconsult.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592214091236:android:c898d89e2f499a8e3a53f1",
+        "android_client_info": {
+          "package_name": "com.example.dekutteleconsult"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592214091236-2b3b00frrai1d8m62alm2klejghcgkjo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALtGHBEeLu36rSoVEdI4uW-lwWuvi97QY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592214091236-2b3b00frrai1d8m62alm2klejghcgkjo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

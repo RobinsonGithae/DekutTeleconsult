@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    tools:context=".ReportEmergencyActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/EmergencyTv2"
+        android:background="@color/colorWhite"
+        android:textColor="@color/colorRed"
+        android:text="REPORT EMERGENCY"
+        android:textSize="25sp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold|italic"
+        />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/activateEmergcyBtn"
+        android:text="ACTIVATE EMERGENCY"
+        android:backgroundTint="@color/colorRed"
+
+        android:textStyle="bold|italic"
+        android:textColor="@color/colorWhite"
+        android:layout_gravity="center_horizontal"
+        />
+
+
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/deactivateEmergcyBtn"
+        android:text="DEACTIVATE EMERGENCY"
+        android:textStyle="bold|italic"
+        android:textColor="@color/colorWhite"
+        android:layout_gravity="center_horizontal"
+        />
+
+</LinearLayout>

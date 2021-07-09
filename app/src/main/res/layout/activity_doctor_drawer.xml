@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/docdrawerLayout"
+    tools:openDrawer="start">
+    <include
+        layout="@layout/activity_doctors_dashboard"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"/>
+
+    <com.google.android.material.navigation.NavigationView
+
+        android:id="@+id/docnav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#3C57F9"
+        android:layout_gravity="start"
+        app:itemTextColor="#fdfcfd"
+        app:itemIconTint="#FB13FB"
+        app:menu="@menu/doctorsdrawermenu"
+        app:headerLayout="@layout/docdrawerheader"
+        >
+
+
+    </com.google.android.material.navigation.NavigationView
+        >
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Help"
+        android:id="@+id/itemDochelp">
+    </item>
+    <item
+        android:title="Quit App"
+        android:id="@+id/ItemDocquitapp">
+    </item>
+</menu>

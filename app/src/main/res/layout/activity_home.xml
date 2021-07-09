@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
+
+    <TextView
+        android:id="@+id/TvWelcome"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center_horizontal"
+        android:text="WELCOME"
+        android:textSize="50sp"
+        android:fontFamily="cursive"
+        android:textColor="#ffffff"
+        />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:text="LOGIN"
+        android:textSize="16sp"
+        android:textColor="#ffff"
+        android:background="#5353FE"
+        android:textStyle="bold|italic"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+
+
+
+
+        />
+
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:text="REGISTER"
+        android:background="#5353FE"
+        android:textSize="16sp"
+        android:textColor="#FCF6F6"
+        android:textStyle="bold|italic"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="250dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

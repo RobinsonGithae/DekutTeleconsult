@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+
+
+<androidx.core.widget.NestedScrollView android:layout_height="wrap_content" android:layout_width="match_parent"
+
+    android:fillViewport="true"
+    android:scrollbars="vertical">
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".AddMedicineActivity">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:gravity="left"
+    android:padding="15dp"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="Patient Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorDarkBlue"
+        android:background="@color/colorWhite"
+
+        android:id="@+id/TvPatientNameLabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="Reg No"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorDarkBlue"
+        android:background="@color/colorWhite"
+
+        android:id="@+id/TvPatientIDLabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="Date"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorDarkBlue"
+        android:background="@color/colorWhite"
+
+        android:id="@+id/TvMedcneIssueDateLabel"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="PrescriptionID"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorDarkBlue"
+        android:background="@color/colorWhite"
+
+        android:id="@+id/TvPrescriptionIDLabel"/>
+
+</LinearLayout>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="ADD MEDICINE"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorGreen"
+        android:background="@color/colorBlue"
+        android:layout_marginTop="2dp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/TvAddMedicinesLabel"/>
+        <androidx.core.widget.NestedScrollView android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:scrollbars="vertical|horizontal"
+            android:layout_margin="15dp"
+            >
+            <LinearLayout
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Drug Name:"
+                        android:id="@+id/TVDrugLabel"
+                        />
+                    <Spinner
+                        android:id="@+id/medicineNmSpnr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/medicines_arrays"
+                        android:prompt="@string/medicnprompt"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Drug type:"
+                        android:id="@+id/TVDrugType"
+                        />
+                    <Spinner
+                        android:id="@+id/DrugtypeSpnr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/drug_type_arrays"
+                        android:prompt="@string/drugtypeprompt"
+                        />
+
+                </LinearLayout>
+
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dosage"
+                    android:id="@+id/TVDrugDosage"
+                    />
+                <Spinner
+                    android:id="@+id/DoseUnitsSpnr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/dose_units_arrays"
+                    android:prompt="@string/doseunitsprompt"
+                    />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/doseQuantityET"
+                        android:hint="1"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/colorPurple"
+                        android:background="@drawable/prescription_edittext_frame"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="X"
+                        android:id="@+id/xDoseTV"
+
+                        />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/doseTimesOftheDayET"
+                        android:hint="2"
+                        android:textColor="@color/colorBlack"
+                        android:background="@drawable/prescription_edittext_frame"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:textColorHint="@color/colorPurple"
+
+
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Duration:   "
+                        android:id="@+id/TVprescDuration"
+                        />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/doseDurationET"
+                        android:hint="DRUG INTAKE DURATION IN DAYS"
+                        android:inputType="number"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/colorPurple"
+                        android:background="@drawable/prescription_edittext_frame"
+                        android:maxLines="1"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Instruction: "
+                        android:id="@+id/TVprescInstruction"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/drugInstructionET"
+                        android:hint="INSTRUCTIONS"
+                        android:inputType="textMultiLine"
+                        android:lines="10"
+                        android:gravity="top"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/colorPurple"
+                        android:background="@drawable/prescription_edittext_frame"
+                        />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    >
+
+                    <Button
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="ADD"
+                        android:id="@+id/AddDrug2PrescpnBtn"
+                       android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/colorWhite"
+                        />
+                    <Button
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="CLEAR"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                      android:textColor="@color/colorWhite"
+                        android:id="@+id/ClearAllPrescrptnDetailsBtn"
+                        />
+                    <Button
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="EXIT"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/ExitPrescrptnBtn"
+                       android:textColor="@color/colorWhite"
+                        />
+                    <Button
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="DONE"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/DonePrescrbingBtn"
+                        android:textColor="@color/colorWhite"
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="MEDICINES"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorDarkBlue"
+        android:background="@color/colorWhite"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/TvAddedMedicinesLabel"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addedMedicineLst"
+            android:nestedScrollingEnabled="true"
+
+            />
+
+
+</LinearLayout>
+</androidx.core.widget.NestedScrollView>
+</LinearLayout>

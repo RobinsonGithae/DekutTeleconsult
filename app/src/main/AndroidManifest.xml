@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.dekutteleconsult">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/myAppTheme"
+        android:usesCleartextTraffic="false"
+        tools:targetApi="m">
+        <activity android:name=".HelpActivity"></activity>
+        <activity android:name=".StudentViewPrescriptionActivity" />
+        <activity android:name=".AddMedicineActivity" />
+        <activity android:name=".AddPrescriptionActivity" />
+        <activity android:name=".DoctorDrawerActivity" />
+        <activity android:name=".PayForConsultationActivity" />
+        <activity android:name=".AllUsersActivity" />
+        <activity android:name=".ChatListActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity android:name=".EmergencyMapTrackActivity" />
+        <activity android:name=".LoginWithActivity" />
+        <activity android:name=".DoctorsDashboardActivity" />
+        <activity android:name=".PinSettingsActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".PinLoginActivity" />
+        <activity android:name=".DoctorgetAllEmergenciesActivity" />
+        <activity android:name=".StudentVideoCallActivity" />
+        <activity android:name=".DoctorGivePrescriptionActivity" />
+        <activity android:name=".DeveloperActivity" />
+        <activity android:name=".DoctorGetEmergencyTrackActivity" />
+        <activity android:name=".UserprofileActivity" />
+        <activity android:name=".AllStudentChatListActivity" />
+        <activity
+            android:name=".StudentChatActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ForgotPasswordSuccessActivity" />
+        <activity android:name=".ForgotPasswordActivity" />
+        <activity android:name=".SplashscreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LoginAsActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".DoctorLoginActivity" />
+        <activity android:name=".RegisterAsActivity" />
+        <activity android:name=".StudentLoginActivity" />
+        <activity android:name=".StudentPrescriptionActivity" />
+        <activity android:name=".MedicalHistoryActivity" />
+        <activity android:name=".SelfAssessmentActivity" />
+        <activity android:name=".ReportEmergencyActivity" />
+        <activity android:name=".ConsultViaActivity" />
+        <activity android:name=".StudentDrawerActivity" />
+        <activity android:name=".DoctorSignupActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".StudentSignupActivity" />
+
+        <service
+            android:name=".Service.StudentLocationTrackService"
+            android:enabled="true"
+            android:exported="false" />
+    </application>
+
+</manifest>
