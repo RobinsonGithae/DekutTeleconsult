@@ -9,17 +9,20 @@ public class User {
     private  String Username;
     private String imageURL;
     private  String status;
-    //private String Email;
+
+    private String email;
     //private Date DateOfBirth;
+
+
     private String isDoctor;
 
-    public User(String id, String Username, String imageURL, String status,String isDoctor) {
+    public User(String id, String Username, String imageURL, String status,String email,String isDoctor) {
         this.id = id;
         this.Username = Username;
         this.imageURL = imageURL;
         this.status=status;
         this.isDoctor=isDoctor;
-        //this.Email = email;
+        this.email = email;
         //DateOfBirth = dateOfBirth;
     }
 
@@ -58,8 +61,17 @@ public class User {
         return status;
     }
 
+
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getIsDoctor() {
@@ -69,6 +81,13 @@ public class User {
     public void setIsDoctor(String isDoctor) {
         this.isDoctor = isDoctor;
     }
+
+
+
+
+
+
+
 
     //end of user model
 }

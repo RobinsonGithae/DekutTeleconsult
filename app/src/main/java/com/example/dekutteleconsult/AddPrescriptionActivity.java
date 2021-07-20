@@ -1,11 +1,15 @@
 package com.example.dekutteleconsult;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,6 +22,8 @@ import android.widget.Toast;
 
 import com.example.dekutteleconsult.Adapter.PrescriptionListArrayAdapter;
 import com.example.dekutteleconsult.Model.Prescription;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,6 +45,10 @@ public class AddPrescriptionActivity extends AppCompatActivity {
     public static final String PRESCRIPTION_DATE="prescriptiondate";
 
 
+    public  String ToDeletePRESCRIPTION_ID="";
+    public  String ToUpdatePRESCRIPTION_ID="";
+
+
 
 
 
@@ -53,6 +63,77 @@ public class AddPrescriptionActivity extends AppCompatActivity {
     ListView addedprescriptionLV;
     List<Prescription>prescriptionList;
     DatabaseReference precriptionsRef;
+
+    public void showDeletePrompt(){
+
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setTitle("DELETE");
+        builder.setMessage("Are you sure you want to delete this prescription?");
+        builder.setPositiveButton("YES!!!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                deletePrescription();
+
+            }
+        }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.create().show();
+        }
+
+        public void deletePrescription(){
+        //retrieve prescrpid from intent
+
+            //remove to delete prescrption and all medicines of the prescription or those medicines that have same prescription id as the prescription which is to be deleted
+
+            DatabaseReference prescriptionRef=FirebaseDatabase.getInstance().getReference("prescriptions").child(ToDeletePRESCRIPTION_ID);
+            DatabaseReference medicinesRef=FirebaseDatabase.getInstance().getReference("medicines").child(ToDeletePRESCRIPTION_ID);
+           //delete the prescription
+            prescriptionRef.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(getApplicationContext(),"Prescription deleted successfully",Toast.LENGTH_LONG).show();
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getApplicationContext(),"Failed to delete Prescription because "+e.getMessage()+"TRY LATER",Toast.LENGTH_LONG).show();
+
+                }
+            });
+
+            //Delete MEDICINES for this prescrition
+            medicinesRef.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(getApplicationContext(),"Medicine deleted successfully",Toast.LENGTH_SHORT).show();
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getApplicationContext(),"Failed to delete Medicine 4 this prescription because "+e.getMessage()+"TRY LATER",Toast.LENGTH_LONG).show();
+
+                }
+            });
+
+
+    }
+
+    public void updatePrescription(){
+
+
+        Toast.makeText(getApplicationContext(),"UPDATED",Toast.LENGTH_LONG).show();
+
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,8 +182,40 @@ prescriptionList=new ArrayList<>();
 
 
 
+
+   registerForContextMenu(addedprescriptionLV);
+
     }
 
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.setHeaderTitle("Select Action");
+        menu.add(0,v.getId(),0,"Delete");
+        menu.add(0,v.getId(),0,"Update");
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        AdapterView.AdapterContextMenuInfo contextMenuInfo=(AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+        int itemPosition=contextMenuInfo.position;
+        Prescription  prescription= prescriptionList.get(itemPosition);
+
+        ToDeletePRESCRIPTION_ID=prescription.getPrescriptionID();
+        ToUpdatePRESCRIPTION_ID=prescription.getPrescriptionID();
+
+        if (item.getTitle()=="Delete"){
+            showDeletePrompt();
+
+
+        }else if(item.getTitle()=="Update"){
+            updatePrescription();
+        }
+
+
+        return super.onContextItemSelected(item);
+    }
 
     @Override
     protected void onStart() {

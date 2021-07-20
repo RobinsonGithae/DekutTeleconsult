@@ -105,9 +105,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/profileEmailET"
-                android:inputType="text"
+                android:inputType="textEmailAddress"
                 android:layout_below="@+id/EmailTV"
-                android:hint="Email"
+                android:hint="emailusername@domain.com"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/colorPurple"
                 />
@@ -146,6 +146,107 @@
                 android:textColorHint="@color/colorPurple"
                 />
 
+
+
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/FullnmeTV"
+                android:background="@color/colorWhite"
+                android:textSize="25sp"
+                android:textStyle="bold|italic"
+                android:textColor="@color/colorGrey"
+                android:layout_below="@+id/profileDateOfBirthET"
+                android:text="Full name"
+                android:drawableLeft="@drawable/ic_account"
+                android:layout_alignParentLeft="true"
+
+                />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/fullnmET"
+                android:inputType="text"
+                android:layout_below="@+id/FullnmeTV"
+                android:hint="John Doe Silver"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorPurple"
+                />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/YearOfStudyTV"
+                android:background="@color/colorWhite"
+                android:textSize="25sp"
+                android:textStyle="bold|italic"
+                android:textColor="@color/colorGrey"
+                android:layout_below="@+id/fullnmET"
+                android:text="YearOfStudy"
+                android:drawableLeft="@drawable/ic_account"
+                android:layout_alignParentLeft="true"
+
+                />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/YearOfStudyET"
+                android:inputType="text"
+                android:layout_below="@+id/YearOfStudyTV"
+                android:hint="1"
+                android:maxLines="1"
+                android:maxLength="6"
+
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorPurple"
+                />
+
+
+
+
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/RegNoTV"
+                android:background="@color/colorWhite"
+                android:textSize="25sp"
+                android:textStyle="bold|italic"
+                android:textColor="@color/colorGrey"
+                android:layout_below="@+id/YearOfStudyET"
+                android:text="Reg.No"
+                android:drawableLeft="@drawable/ic_account"
+                android:layout_alignParentLeft="true"
+
+                />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/RegNoET"
+                android:inputType="text"
+                android:maxLines="1"
+                android:maxLength="19"
+                android:layout_below="@+id/RegNoTV"
+                android:hint="C025-01-0000/2018"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorPurple"
+                />
 
 
 

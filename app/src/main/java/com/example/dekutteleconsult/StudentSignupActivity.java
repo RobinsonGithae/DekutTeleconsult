@@ -37,6 +37,8 @@ public class StudentSignupActivity extends AppCompatActivity {
   String studusermame,studpasswrd,studcnfrmpasswrd,studemail;
 
 
+  DatabaseReference studentsRef;
+
 
   public void StudentSignUpInputs(){
       //method to get all inputs
@@ -65,8 +67,12 @@ public class StudentSignupActivity extends AppCompatActivity {
 
                // Also store user info in database
                 reference= FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
+                studentsRef= FirebaseDatabase.getInstance().getReference("Students").child(fuser.getUid());
+
+
                 //now store user data as key value pairs in a hashmap.
                 Map<String,Object> UserInfoMap=new HashMap<>();
+                Map<String,Object> StudentInfoMap=new HashMap<>();
 
                 String userid=fuser.getUid();
                 UserInfoMap.put("id",userid);
@@ -75,22 +81,27 @@ public class StudentSignupActivity extends AppCompatActivity {
                 //Specify if user is student or doctor here. If student give 0 if doctor give 1
                 UserInfoMap.put("isDoctor","0");
                 UserInfoMap.put("imageURL","default");
-
-                UserInfoMap.put("fullName","default");
-                UserInfoMap.put("regNo","default");
-                UserInfoMap.put("yearOfStudy","default");
-                UserInfoMap.put("gender","default");
-                UserInfoMap.put("DOBirth","default");
+                //
                 UserInfoMap.put("email",studemail);
-                UserInfoMap.put("phoneNo","default");
+
+                StudentInfoMap.put("fullName","default");
+                StudentInfoMap.put("regNo","default");
+                StudentInfoMap.put("yearOfStudy","default");
+                StudentInfoMap.put("gender","default");
+                StudentInfoMap.put("DOBirth","default");
+
+                StudentInfoMap.put("phoneNo","default");
 
                 //save/write new user info Map data to firestore Users collection.
                 df.set(UserInfoMap);
 
-//also set values for database
+//also set user values to database
                 reference.setValue(UserInfoMap);
-                Intent intent =new Intent(StudentSignupActivity.this,StudentDrawerActivity.class);
+                //set student values to database. A student is a user.
+                studentsRef.setValue(StudentInfoMap);
 
+
+                Intent intent =new Intent(StudentSignupActivity.this,StudentDrawerActivity.class);
                 startActivity(intent);
                 //Use finish 2 Prevent user from going back to signup after creating account
                 finish();
@@ -181,6 +192,7 @@ return false;
         passwrdET=(EditText)findViewById(R.id.ETStudsgnupPswd);
         confrmPasswrdET=(EditText)findViewById(R.id.ETStudSignupconfirmPswrd);
         emailET=(EditText)findViewById(R.id.ETStudsignupEmail);
+
 
 
 
