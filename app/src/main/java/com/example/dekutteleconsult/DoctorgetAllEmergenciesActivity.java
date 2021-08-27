@@ -7,10 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.dekutteleconsult.Adapter.ChatAdapter;
 import com.example.dekutteleconsult.Adapter.EmergencyAdapter;
-import com.example.dekutteleconsult.Model.Chat;
-import com.example.dekutteleconsult.Model.Emergency;
+import com.example.dekutteleconsult.DataModel.Emergency;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

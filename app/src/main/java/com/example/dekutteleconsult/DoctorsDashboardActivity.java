@@ -25,6 +25,9 @@ public class DoctorsDashboardActivity extends AppCompatActivity {
     @Override
     public void onClick(View v) {
 
+        startActivity(new Intent(DoctorsDashboardActivity.this,AllStudentChatListActivity.class));
+
+
     }
 });
 

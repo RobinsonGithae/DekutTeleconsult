@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -45,12 +47,19 @@ public class DoctorSignupActivity extends AppCompatActivity {
 
 
     public void FirebaseRegisterUser(){
+
+
+
         fAuth=FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
         StudentSignUpInputs();
         fAuth.createUserWithEmailAndPassword( Docemail, Docpasswrd).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
+                FirebaseUser fuser=FirebaseAuth.getInstance().getCurrentUser();
+                DatabaseReference doctorsRef= FirebaseDatabase.getInstance().getReference("Doctors").child(fuser.getUid());
+
+
                 //check and toast if user created successfully
                 Toast.makeText(getApplicationContext(),"Account created successfully",Toast.LENGTH_LONG).show();
                 //GET user info of currently registred
@@ -60,9 +69,20 @@ public class DoctorSignupActivity extends AppCompatActivity {
                 DocumentReference df=fStore.collection("Users").document(user.getUid());
                 //now store user data as key value pairs in a hashmap.
                 Map<String,Object> UserInfoMap=new HashMap<>();
+
+
+                String userid=fuser.getUid();
+                UserInfoMap.put("id",userid);
                 UserInfoMap.put("Username",Docusermame);
                 //Specify if user is student or doctor here. If student give 0 if doctor give 1
                 UserInfoMap.put("isDoctor","1");
+                UserInfoMap.put("imageURL","default");
+                //
+                UserInfoMap.put("email",Docemail);
+
+
+
+                doctorsRef.setValue(UserInfoMap);
 
                 //save/write new user info Map data to firestore Users collection.
                 df.set(UserInfoMap);

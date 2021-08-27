@@ -13,7 +13,6 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.chaos.view.PinView;
-import com.example.dekutteleconsult.Model.Pin;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

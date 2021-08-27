@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.view.View;
 
+import com.example.dekutteleconsult.Adapter.RecentUserChatsAdapter;
 import com.example.dekutteleconsult.Adapter.UserAdapter;
-import com.example.dekutteleconsult.Model.Chat;
-import com.example.dekutteleconsult.Model.User;
+import com.example.dekutteleconsult.DataModel.User;
+import com.example.dekutteleconsult.Notification.MyFirebaseIdService;
+import com.example.dekutteleconsult.Notification.Token;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,8 +27,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AllStudentChatListActivity extends AppCompatActivity {
+
+    FloatingActionButton addUser2ChatFAB;
+
+
     private RecyclerView studChatListRcycler;
-    private UserAdapter userAdapter;
+    private RecentUserChatsAdapter recentUserChatsAdapter;
     private List<User> mUsers;
 
 //    FirebaseUser fbaseUser;
@@ -33,10 +41,36 @@ public class AllStudentChatListActivity extends AppCompatActivity {
   //  private List<String> usersList;
 
 
+
+
+    public void updateToken(String token){
+        //update notification token here
+        //reference is tokenreference
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Tokens");
+        Token token1=new Token(token);
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_student_chat_list);
+
+
+        addUser2ChatFAB=findViewById(R.id.ChooseUserToChatFAB);
+        addUser2ChatFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AllStudentChatListActivity.this,AllUsersActivity.class));
+
+            }
+        });
+
+
+
+
+
+
 
         studChatListRcycler = (RecyclerView) findViewById(R.id.studentChatListRecycler);
         studChatListRcycler.setHasFixedSize(true);
@@ -126,6 +160,10 @@ public class AllStudentChatListActivity extends AppCompatActivity {
 //
 ////here
 
+
+        //update notification token here
+       // updateToken(FirebaseInstanceId.getInstance().getToken());
+
     }
 
      private void readChatUsersFromFirebase() {
@@ -153,8 +191,8 @@ public class AllStudentChatListActivity extends AppCompatActivity {
                }
             }
 //
-           userAdapter = new UserAdapter(getApplicationContext(), mUsers, false);
-            studChatListRcycler.setAdapter(userAdapter);
+           recentUserChatsAdapter = new RecentUserChatsAdapter(getApplicationContext(), mUsers, true );
+            studChatListRcycler.setAdapter(recentUserChatsAdapter);
 //
 //
        }

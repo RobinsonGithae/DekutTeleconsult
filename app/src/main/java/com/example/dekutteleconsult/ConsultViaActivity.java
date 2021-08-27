@@ -43,7 +43,8 @@ public class ConsultViaActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 //startActivity(new Intent(ConsultViaActivity.this,StudentChatActivity.class));
-                startActivity(new Intent(ConsultViaActivity.this,AllUsersActivity.class));
+              //  startActivity(new Intent(ConsultViaActivity.this,AllUsersActivity.class));
+                startActivity(new Intent(ConsultViaActivity.this,AllDoctorsActivity.class));
 
             }
         });
@@ -54,7 +55,8 @@ public class ConsultViaActivity extends AppCompatActivity {
         consultViaVideoCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ConsultViaActivity.this,StudentVideoCallActivity.class));
+              //  startActivity(new Intent(ConsultViaActivity.this,StudentVideoCallActivity.class));
+                startActivity(new Intent(ConsultViaActivity.this,VideoCall2Activity.class));
 
 
             }

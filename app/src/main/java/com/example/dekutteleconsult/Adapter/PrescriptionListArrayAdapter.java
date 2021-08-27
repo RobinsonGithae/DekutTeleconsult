@@ -1,7 +1,6 @@
 package com.example.dekutteleconsult.Adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.dekutteleconsult.Model.Prescription;
+import com.example.dekutteleconsult.DataModel.Prescription;
 import com.example.dekutteleconsult.R;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class PrescriptionListArrayAdapter extends ArrayAdapter<Prescription> {

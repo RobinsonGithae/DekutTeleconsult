@@ -6,14 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.dekutteleconsult.Model.User;
+import com.example.dekutteleconsult.DataModel.User;
 import com.example.dekutteleconsult.R;
 import com.example.dekutteleconsult.StudentChatActivity;
 
@@ -48,40 +47,42 @@ private boolean ischat;
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        User user=mUsersList.get(position);
+       final User user=mUsersList.get(position);
 
     holder.username.setText(user.getUsername());
 
 
-        //if (user.getImageURL().equals("default")){
-//holder.profile_pic.setImageResource(R.mipmap.ic_launcher_round);
-     //  }
-      // else {
-//
-//
-//Glide.with(mContext).load(user.getImageURL()).into(holder.profile_pic);
-       // }
+
+
+//here
+        if (user.getImageURL().equals("default")){
+holder.profile_pic.setImageResource(R.mipmap.ic_launcher_round);
+       }
+
+       else {
+Glide.with(mContext).load(user.getImageURL()).into(holder.profile_pic);
+        }
+
+//here
 
 
 
 
+        if (ischat){
+            if (user.getStatus().equals("online")){
+                holder.img_on.setVisibility(View.VISIBLE);
+                holder.img_off.setVisibility(View.GONE);
 
-//
-//        if (ischat){
-//            if (user.getStatus().equals("online")){
-//                holder.img_on.setVisibility(View.VISIBLE);
-//                holder.img_off.setVisibility(View.GONE);
-//
-//            }else {
-//                holder.img_on.setVisibility(View.GONE);
-//                holder.img_off.setVisibility(View.VISIBLE);
-//
-//            }
-//        }else {
-//            holder.img_on.setVisibility(View.GONE);
-//            holder.img_off.setVisibility(View.GONE);
-//
-//        }
+            }else {
+                holder.img_on.setVisibility(View.GONE);
+                holder.img_off.setVisibility(View.VISIBLE);
+
+            }
+        }else {
+            holder.img_on.setVisibility(View.GONE);
+            holder.img_off.setVisibility(View.GONE);
+
+        }
 
 
 

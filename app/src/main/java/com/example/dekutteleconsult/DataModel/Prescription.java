@@ -1,4 +1,4 @@
-package com.example.dekutteleconsult.Model;
+package com.example.dekutteleconsult.DataModel;
 
 public class Prescription {
     private String prescriptionID;

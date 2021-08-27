@@ -104,7 +104,10 @@ public class DoctorDrawerActivity extends AppCompatActivity implements Navigatio
             @Override
             public void onClick(View v) {
                 //startActivity(new Intent(StudentDrawerActivity.this,StudentChatActivity.class));
-                startActivity(new Intent(DoctorDrawerActivity.this,AllUsersActivity.class));
+
+                startActivity(new Intent(DoctorDrawerActivity.this,AllStudentChatListActivity.class));
+
+
             }
         });
 
@@ -179,7 +182,7 @@ public class DoctorDrawerActivity extends AppCompatActivity implements Navigatio
             Intent intent =new Intent(DoctorDrawerActivity.this, UserprofileActivity.class);
             startActivity(intent);
 
-        }else if (id==R.id.itmSignout){
+        }else if (id==R.id.itmDocSignout){
 
             //logic to signout student Here
             //first clear sharedpreferences that has login data saved in it
@@ -212,7 +215,7 @@ public class DoctorDrawerActivity extends AppCompatActivity implements Navigatio
             Intent Devintent=new Intent(DoctorDrawerActivity.this,DeveloperActivity.class);
             startActivity(Devintent);
 
-        }else if (id==R.id.itmShareApp)
+        }else if (id==R.id.itmDocShareApp)
         { //share app to others
             ApplicationInfo api = getApplicationContext().getApplicationInfo();
             String apkPath = api.sourceDir;

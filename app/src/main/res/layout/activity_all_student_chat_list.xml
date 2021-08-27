@@ -24,4 +24,14 @@ android:scrollbars="vertical"
 
         />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_chat"
+        android:id="@+id/ChooseUserToChatFAB"
+        android:background="@color/colorPurple"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+/>
 </RelativeLayout>

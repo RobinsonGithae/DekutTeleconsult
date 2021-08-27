@@ -6,7 +6,7 @@
 
     <string name="google_maps_key">AIzaSyALtGHBEeLu36rSoVEdI4uW-lwWuvi97QY</string>
     <string name="agora_app_id">2b9e73d7d83848a1884afe449a6fe1ab</string>
-    <string name="agora_access_token">0062b9e73d7d83848a1884afe449a6fe1abIABUIwRRfLbJz3FhMT7eyTHn8ndnKo2WXpfUqlP1nZyIheIVUyEAAAAAEABlU0aLjxTNYAEAAQCOFM1g </string>
+    <string name="agora_access_token">0062b9e73d7d83848a1884afe449a6fe1abIACTRIBKrFO2ej4cY0y3xRAb92xG01xbYUrfthyf+jzCauIVUyEAAAAAEACcjToMAG0ZYQEAAQAAbRlh </string>
 
 
     <string name="agora_app_secret">1d33695a66294493845607953387418f</string>
@@ -18,15 +18,44 @@
 
     <string-array name="medicines_arrays">
         <item> Paracetamol 500mg </item>
-        <item> Actal 500mg </item>
-        <item> Cephalexin 350mg </item>
-        <item> Amoxil 200mg </item>
-        <item> Centizine 22mg </item>
-        <item> Brufen 400mg </item>
-        <item> Diclofenac 55mg </item>
         <item> Vitamin Syrup 100ml </item>
+        <item> Actal 500mg </item>
+        <item> Amoxil 200mg </item>
+        <item> Brufen 400mg </item>
+        <item> Bleomycin 105mg </item>
+        <item> Bosentan 500mg </item>
+        <item> Diclofenac 55mg </item>
         <item> secnidzole 474mg </item>
+        <item> Centizine 22mg </item>
+        <item> Cephalexin 350mg </item>
         <item> Coartem 75mg </item>
+        <item> Cyclosporine 100mg </item>
+        <item> Crizotinib 200mg </item>
+        <item> Dapsone 25mg </item>
+        <item> Dexamethasone 4mg </item>
+        <item> Erythromycin 65mg </item>
+        <item> Enoxaparin 80mg </item>
+        <item> Furosemide 40mg </item>
+        <item> Famciclovir 250mg </item>
+        <item> Gefitinib 250mg </item>
+        <item> Hydrocortisone 5mg </item>
+        <item> Hydralazine 10mg </item>
+        <item> Heparin Lock Flush 75mg </item>
+        <item> Itraconazole 30mg </item>
+        <item> Ketoconazole 200mg </item>
+        <item> Lamivudine 150mg </item>
+        <item> Linezolid 600mg </item>
+        <item> Lomustine 40mg </item>
+        <item> Methadone 10mg </item>
+        <item> Neuroforte 55mg </item>
+        <item> Nelarabine 70mg </item>
+        <item> Omeprazole 20mg </item>
+        <item> Oxycodone 80mg </item>
+        <item> Penicillin 250mg </item>
+        <item> Phenobarbital 4mg </item>
+        <item> Rituximab 85mg </item>
+
+
     </string-array>
 
 

@@ -4,6 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:title="Prescribe"
+        android:id="@+id/itemprescribe"
+        android:icon="@drawable/ic_medicine"
+        app:showAsAction="ifRoom"
+        >
+    </item>
+
+    <item
         android:title="Video call"
         android:id="@+id/itemvideocall"
         android:icon="@drawable/ic_video_call"
@@ -21,7 +29,10 @@
     <item
         android:title="Search"
         android:id="@+id/searchChat"
-        app:showAsAction="never">
+        app:showAsAction="never|collapseActionView"
+        android:icon="@drawable/ic_search_white"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        >
     </item>
 
     <item

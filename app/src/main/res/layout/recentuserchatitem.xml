@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/ItmProfilePic"
+        android:src="@mipmap/ic_launcher"
+        android:layout_centerVertical="true"
+        />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="username"
+    android:id="@+id/UserItemUsername"
+android:textColor="@color/colorGreen"
+    android:layout_toRightOf="@id/ItmProfilePic"
+android:layout_toEndOf="@id/ItmProfilePic"
+
+
+    android:layout_marginLeft="10dp"
+    android:textSize="25sp"
+    android:textStyle="bold"
+    />
+
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        app:civ_border_width="10dp"
+        app:civ_border_color="@color/colorGreen"
+        android:id="@+id/img_on"
+        android:visibility="gone"
+        android:src="@mipmap/ic_launcher_round"
+        android:layout_below="@id/UserItemUsername"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="-15dp"
+        android:layout_toRightOf="@id/ItmProfilePic"
+        android:layout_toEndOf="@id/ItmProfilePic"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        app:civ_border_width="10dp"
+        app:civ_border_color="@color/colorGrey"
+        android:id="@+id/img_off"
+        android:visibility="gone"
+        android:src="@mipmap/ic_launcher_round"
+        android:layout_below="@id/UserItemUsername"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="-15dp"
+        android:layout_toRightOf="@id/ItmProfilePic"
+        android:layout_toEndOf="@id/ItmProfilePic"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="recent message"
+        android:id="@+id/UserRecentMessageTV"
+        android:textColor="@color/colorPurple"
+        android:layout_toRightOf="@id/ItmProfilePic"
+        android:layout_toEndOf="@id/ItmProfilePic"
+        android:layout_below="@id/UserItemUsername"
+        android:layout_marginLeft="10dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:layout_marginStart="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="time"
+        android:id="@+id/UserRecentMessageTimeTV"
+        android:textColor="@color/colorPurple"
+        android:layout_toRightOf="@id/UserItemUsername"
+
+        android:layout_marginLeft="150dp"
+
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:maxLines="1"
+        android:padding="5dp"
+         />
+
+
+</RelativeLayout>

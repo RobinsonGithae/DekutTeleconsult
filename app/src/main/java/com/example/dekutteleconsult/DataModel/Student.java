@@ -1,4 +1,4 @@
-package com.example.dekutteleconsult.Model;
+package com.example.dekutteleconsult.DataModel;
 
 public class Student extends User {
 

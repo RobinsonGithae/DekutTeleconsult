@@ -1,8 +1,9 @@
-package com.example.dekutteleconsult.Model;
-
-import java.util.Date;
+package com.example.dekutteleconsult.DataModel;
 
 public class Doctor extends User {
+
+
+
     private String DoctorID;
   private   String Designation;
 
@@ -11,6 +12,13 @@ public class Doctor extends User {
         DoctorID = doctorID;
         Designation = designation;
     }
+
+    public Doctor(){
+
+    }
+
+
+
 
     public String getDoctorID() {
         return DoctorID;
@@ -27,4 +35,6 @@ public class Doctor extends User {
     public void setDesignation(String designation) {
         Designation = designation;
     }
+
+
 }

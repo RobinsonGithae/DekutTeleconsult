@@ -1,6 +1,4 @@
-package com.example.dekutteleconsult.Model;
-
-import java.util.Date;
+package com.example.dekutteleconsult.DataModel;
 
 public class User {
 

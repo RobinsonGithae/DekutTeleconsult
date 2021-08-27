@@ -125,6 +125,7 @@ public class StudentVideoCallActivity extends AppCompatActivity {
         }
     };
 
+
     private void setupRemoteVideo(int uid) {
         ViewGroup parent = mRemoteContainer;
         if (parent.indexOfChild(mLocalVideo.view) > -1) {

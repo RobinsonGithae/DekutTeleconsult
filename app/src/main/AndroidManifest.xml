@@ -17,9 +17,9 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-    <uses-permission android:name="android.permission.REQUEST_COMPANION_RUN_IN_BACKGROUND"/>
-    <uses-permission android:name="android.permission.REQUEST_COMPANION_USE_DATA_IN_BACKGROUND"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.REQUEST_COMPANION_RUN_IN_BACKGROUND" />
+    <uses-permission android:name="android.permission.REQUEST_COMPANION_USE_DATA_IN_BACKGROUND" />
 
     <application
         android:allowBackup="true"
@@ -30,7 +30,14 @@
         android:theme="@style/myAppTheme"
         android:usesCleartextTraffic="false"
         tools:targetApi="m">
-        <activity android:name=".HelpActivity"></activity>
+        <activity android:name=".VideoCall2Activity"></activity>
+        <activity android:name=".VideoCallActivity" />
+        <activity
+            android:name=".DoctorChatActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".AllDoctorsActivity" />
+        <activity android:name=".HelpActivity" />
         <activity android:name=".StudentViewPrescriptionActivity" />
         <activity android:name=".AddMedicineActivity" />
         <activity android:name=".AddPrescriptionActivity" />

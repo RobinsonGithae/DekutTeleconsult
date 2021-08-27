@@ -8,25 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.example.dekutteleconsult.DoctorGetEmergencyTrackActivity;
-import com.example.dekutteleconsult.DoctorgetAllEmergenciesActivity;
 import com.example.dekutteleconsult.EmergencyMapTrackActivity;
-import com.example.dekutteleconsult.Model.Emergency;
-import com.example.dekutteleconsult.Model.User;
+import com.example.dekutteleconsult.DataModel.Emergency;
 import com.example.dekutteleconsult.R;
-import com.example.dekutteleconsult.StudentChatActivity;
 
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EmergencyAdapter extends RecyclerView.Adapter<EmergencyAdapter.ViewHolder>  {
     //adapter class

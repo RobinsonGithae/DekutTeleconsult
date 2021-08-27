@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/myPrescriptionSearchVw"
         android:background="@color/colorWhite"
+
         />
 
     <ListView

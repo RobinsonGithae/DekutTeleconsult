@@ -2,7 +2,6 @@ package com.example.dekutteleconsult;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,10 +11,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.chaos.view.PinView;
-import com.example.dekutteleconsult.Model.Pin;
+import com.example.dekutteleconsult.DataModel.Pin;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

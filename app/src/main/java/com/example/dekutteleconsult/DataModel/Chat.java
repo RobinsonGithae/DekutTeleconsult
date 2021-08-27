@@ -1,4 +1,4 @@
-package com.example.dekutteleconsult.Model;
+package com.example.dekutteleconsult.DataModel;
 
 public class Chat {
 
@@ -6,12 +6,14 @@ public class Chat {
     private String Receiver=" ";
     private String message=" ";
     private boolean isseen;
+    private String timestamp=" ";
 
-    public Chat(String sender, String receiver, String message,boolean isseen) {
+    public Chat(String sender, String receiver, String message,boolean isseen, String time) {
         this.Sender = sender;
         this.Receiver = receiver;
         this.message = message;
         this.isseen=isseen;
+        this.timestamp=time;
     }
 
     public Chat() {
@@ -48,5 +50,13 @@ public class Chat {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 }

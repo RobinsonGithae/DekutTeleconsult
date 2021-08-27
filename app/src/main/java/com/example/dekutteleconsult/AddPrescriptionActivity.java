@@ -8,20 +8,21 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dekutteleconsult.Adapter.PrescriptionListArrayAdapter;
-import com.example.dekutteleconsult.Model.Prescription;
+import com.example.dekutteleconsult.DataModel.Prescription;
+import com.example.dekutteleconsult.DataModel.Student;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -35,8 +36,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class AddPrescriptionActivity extends AppCompatActivity {
+
+
 
 
     public static final String PRESCRIPTION_ID="prescriptionid";
@@ -49,7 +53,7 @@ public class AddPrescriptionActivity extends AppCompatActivity {
     public  String ToUpdatePRESCRIPTION_ID="";
 
 
-
+String studentFullName,studentRegNo;
 
 
 
@@ -59,10 +63,110 @@ public class AddPrescriptionActivity extends AppCompatActivity {
     DatePicker prescriptionDatePicker;
 
     EditText patientNameET,ETpatientID,ETIntakeDuration,ETNoOfMedcneInPrescrptn;
+    TextView DateTV;
 
     ListView addedprescriptionLV;
     List<Prescription>prescriptionList;
     DatabaseReference precriptionsRef;
+    Intent ChatIntent=getIntent();
+    Intent intent2=getIntent();
+
+    String passedid;
+    String rawSystemtime,PrescriptionDateTime;
+
+
+
+    public void automaticallyGetPatientDetailsFromDB(){
+Bundle bundle=getIntent().getExtras();
+
+if (bundle!=null){
+    passedid=bundle.getString("passedid");
+}
+
+
+      //   Toast.makeText(getApplicationContext(),"passed id is"+passedid,Toast.LENGTH_LONG).show();
+
+        assert passedid != null;
+        DatabaseReference studentRef=FirebaseDatabase.getInstance().getReference("Students").child(passedid);
+
+        studentRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Student student=snapshot.getValue(Student.class);
+                assert student != null;
+                studentRegNo= student.getRegNo();
+                studentFullName=student.getFullName();
+
+                patientNameET.setText(studentFullName);
+                ETpatientID.setText(studentRegNo);
+
+
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+getCurrentSystemsDateAutomatically();
+    }
+
+    public void getCurrentSystemsDateAutomatically(){
+
+
+
+        rawSystemtime=String.valueOf(System.currentTimeMillis());
+      //convert timestamp to dd/mm/yyyy hh:mm am/pm
+        Calendar calendar=Calendar.getInstance(Locale.ENGLISH);
+        calendar.setTimeInMillis(Long.parseLong(rawSystemtime));
+
+        PrescriptionDateTime= DateFormat.format("dd/MM/yyyy hh:mm aa",calendar).toString();
+String DateLabel="Todays Date: "+PrescriptionDateTime;
+        DateTV.setText(PrescriptionDateTime);
+        Toast.makeText(getApplicationContext(),"raw date is "+PrescriptionDateTime,Toast.LENGTH_LONG).show();
+
+
+    }
+
+    public Boolean prescriptionInputFieldsDataValid(){
+        // method to ensure inputs are valid
+        if ((patientNameET.getText().toString().trim().isEmpty())){
+
+           patientNameET.setError("Patient name is empty. Enter All Fields");
+            return false;
+        }
+
+        if ((ETpatientID.getText().toString().trim().isEmpty())){
+
+            patientNameET.setError("Patient ID/Reg No is empty. Enter All Fields");
+            return false;
+        }
+
+        if ((ETIntakeDuration.getText().toString().trim().isEmpty())){
+
+            patientNameET.setError("Prescription Duration  is empty. Enter All Fields");
+            return false;
+        }
+
+
+        if ((ETNoOfMedcneInPrescrptn.getText().toString().trim().isEmpty())){
+
+            patientNameET.setError("Patient name is empty.Enter All Fields");
+            return false;
+        }
+
+
+
+
+
+        return true;
+    }
+
+
+
 
     public void showDeletePrompt(){
 
@@ -139,15 +243,19 @@ public class AddPrescriptionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_prescription);
-precriptionsRef= FirebaseDatabase.getInstance().getReference("prescriptions");
+
+        precriptionsRef= FirebaseDatabase.getInstance().getReference("prescriptions");
 
         addedprescriptionLV=(ListView)findViewById(R.id.addedPrescriptionList);
         addPrescriptionBtn=(Button)findViewById(R.id.addPrescrptnBtn);
-        prescriptionDatePicker=(DatePicker)findViewById(R.id.prescrptnDatePcr);
+      //  prescriptionDatePicker=(DatePicker)findViewById(R.id.prescrptnDatePcr);
          patientNameET=(EditText)findViewById(R.id.patientNameET);
         ETpatientID=(EditText)findViewById(R.id.RegNoET);
         ETIntakeDuration=(EditText)findViewById(R.id.prescpDurationET);
         ETNoOfMedcneInPrescrptn=(EditText)findViewById(R.id.NoOfMedcneInPrescrptnET);
+        DateTV=(TextView) findViewById(R.id.TvDate);
+
+        automaticallyGetPatientDetailsFromDB();
 
 prescriptionList=new ArrayList<>();
 
@@ -155,7 +263,13 @@ prescriptionList=new ArrayList<>();
          addPrescriptionBtn.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 addPrescription();
+
+                 if (prescriptionInputFieldsDataValid()) {
+
+                     addPrescription();
+                 }else {
+                     Toast.makeText(getApplicationContext(),"Check For empty Prescroption Fields",Toast.LENGTH_LONG).show();
+                 }
              }
 
 
@@ -254,22 +368,25 @@ prescriptionList=new ArrayList<>();
         int noOfMedicine=Integer.parseInt(ETNoOfMedcneInPrescrptn.getText().toString());
         int durationInDays=Integer.parseInt(ETIntakeDuration.getText().toString());
 
-        int day=prescriptionDatePicker.getDayOfMonth();
-        int month=prescriptionDatePicker.getMonth();
-        int year=prescriptionDatePicker.getYear();
-        Calendar calendar=Calendar.getInstance();
-        calendar.set(year,month,day);
-//convert date to string
-       Date date1=(Date)new Date(year,month,day);
 
-        java.text.SimpleDateFormat sdf=new SimpleDateFormat("yyyy-mm-dd");
-        String dateString=sdf.format(date1);
+//        Datepicker code
+//        int day=prescriptionDatePicker.getDayOfMonth();
+//        int month=prescriptionDatePicker.getMonth();
+//        int year=prescriptionDatePicker.getYear();
+//        Calendar calendar=Calendar.getInstance();
+//        calendar.set(year,month,day);
+////convert date to string
+//       Date date1=(Date)new Date(year,month,day);
+//
+//        java.text.SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+//        String dateString=sdf.format(date1);
 
-        Toast.makeText(getApplicationContext(),dateString,Toast.LENGTH_LONG).show();
+
+
 if (!TextUtils.isEmpty(patientName)){
     String id=precriptionsRef.push().getKey();
 
-    Prescription prescription=new Prescription(id,regNo,patientName,dateString,durationInDays,noOfMedicine);
+    Prescription prescription=new Prescription(id,regNo,patientName,PrescriptionDateTime,durationInDays,noOfMedicine);
 
     precriptionsRef.child(id).setValue(prescription);
 

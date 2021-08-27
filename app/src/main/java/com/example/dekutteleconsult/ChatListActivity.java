@@ -8,9 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.dekutteleconsult.Adapter.UserAdapter;
-import com.example.dekutteleconsult.Model.Chat;
-import com.example.dekutteleconsult.Model.Chatlist;
-import com.example.dekutteleconsult.Model.User;
+import com.example.dekutteleconsult.DataModel.Chatlist;
+import com.example.dekutteleconsult.DataModel.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

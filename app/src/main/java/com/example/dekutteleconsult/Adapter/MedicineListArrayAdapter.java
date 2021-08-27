@@ -10,8 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.dekutteleconsult.Model.Medicine;
-import com.example.dekutteleconsult.Model.Prescription;
+import com.example.dekutteleconsult.DataModel.Medicine;
 import com.example.dekutteleconsult.R;
 
 import java.util.List;

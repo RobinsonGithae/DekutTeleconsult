@@ -88,16 +88,8 @@
         android:text="Todays Date:"
         android:textColor="@color/colorDarkBlue"
         android:background="@color/colorWhite"
-        android:id="@+id/TvTodaysDate"/>
-    <DatePicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/prescrptnDatePcr"
-        android:datePickerMode="spinner"
-        android:calendarViewShown="false"
-        android:layout_marginLeft="5dp"
+        android:id="@+id/TvDate"/>
 
-        />
 
 
     <Button

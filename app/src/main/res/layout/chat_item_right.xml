@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
@@ -10,8 +11,10 @@
     >
     <RelativeLayout
         android:layout_width="300dp"
+        android:id="@+id/chatRightRelativeLyt"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:layout_toLeftOf="@id/selectedChatCheckImgVw"
         android:layout_alignParentRight="true">
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="wrap_content"
@@ -38,12 +41,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="seen"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorGreen"
             android:id="@+id/seenTv"
             android:layout_below="@+id/actualMessageTv"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="time"
+            android:textColor="@color/colorPrimaryDark"
+            android:visibility="visible"
+            android:id="@+id/timeTv"
+            android:layout_below="@+id/actualMessageTv"
+            android:layout_toLeftOf="@id/seenTv"
+            android:layout_toStartOf="@id/seenTv" />
 
 
 
@@ -53,5 +66,18 @@
 
 
     </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/selectedChatCheckImgVw"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="5dp"
+        app:srcCompat="@drawable/ic_check_circle_blue"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/chatRightRelativeLyt"
+        android:visibility="gone"
+        />
 
 </RelativeLayout>

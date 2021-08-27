@@ -3,6 +3,7 @@ package com.example.dekutteleconsult;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -22,8 +22,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.dekutteleconsult.Adapter.ChatAdapter;
-import com.example.dekutteleconsult.Model.Chat;
-import com.example.dekutteleconsult.Model.User;
+import com.example.dekutteleconsult.DataModel.Chat;
+import com.example.dekutteleconsult.DataModel.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,6 +31,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -61,14 +62,123 @@ public class StudentChatActivity extends AppCompatActivity {
     ValueEventListener seenListener;
 //added
     //String userid;
-
+String passid;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater=getMenuInflater();
         inflater.inflate(R.menu.chatmenuitems,menu);
 
+        MenuItem item=menu.findItem(R.id.searchChat);
+
+        SearchView chatSearchView=(SearchView)item.getActionView();
+        chatSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                searchStudentChats(query);
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+
+                searchStudentChats(newText);
+                return false;
+            }
+        });
+
         return true;
     }
+
+
+    public void searchStudentChats(String srchTxt){
+        final String userid=ChatIntent.getStringExtra("userid");
+        fUser= FirebaseAuth.getInstance().getCurrentUser();
+        assert fUser != null;
+        final String myid=fUser.getUid();
+
+        //testing
+
+
+
+        assert userid != null;
+        DbReference=FirebaseDatabase.getInstance().getReference("Users").child(userid);
+        DbReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                User user=snapshot.getValue(User.class);
+                assert user != null;
+
+
+
+
+
+
+                Query chatSrchQuery=FirebaseDatabase.getInstance().getReference("chats").orderByChild("message").startAt(srchTxt).endAt(srchTxt+"\uf8ff");
+
+                chatSrchQuery.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+                        //User user=snapshot.getValue(User.class);
+                        assert user != null;
+                        String imageurl=user.getImageURL();
+
+                        //clear list if data changes/new chat added
+                        mchats.clear();
+
+
+
+                        for (DataSnapshot dataSnapshot:snapshot.getChildren() ){
+                            //get all chats from databse
+                            Chat chat=dataSnapshot.getValue(Chat.class);
+                            assert chat != null;
+                            if(chat.getReceiver().equals(myid)&& chat.getSender().equals(userid)|| chat.getReceiver().equals(userid) && chat.getSender().equals(myid)){
+
+                                //NOW get only add chat for the specific (receiver) user to the chats list
+                                mchats.add(chat);
+                            }
+                            appchatAdapter=new ChatAdapter(StudentChatActivity.this,mchats,imageurl);
+                            chatsRecyclrVw.setAdapter(appchatAdapter);
+
+                        }
+
+
+
+
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
+
+    }
+
+
+
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -82,6 +192,25 @@ public class StudentChatActivity extends AppCompatActivity {
 
 
                 break;
+
+            case R.id.itemprescribe:
+                //do something
+                Intent intent2=new Intent(StudentChatActivity.this, AddPrescriptionActivity.class);
+              Bundle bundle=new Bundle();
+              //  Toast.makeText(getApplicationContext(),"passid is"+passid,Toast.LENGTH_LONG).show();
+
+                bundle.putString("passedid",passid);
+              intent2.putExtras(bundle);
+              intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+
+                startActivity(intent2);
+
+
+                break;
+
+
+
             case R.id.clearChat:
              //clear chat
 
@@ -139,7 +268,10 @@ public class StudentChatActivity extends AppCompatActivity {
 //final String userid="2pGndZ9uTNdufdnYcVWoru57yVr2";
         final String userid=ChatIntent.getStringExtra("userid");
         fUser= FirebaseAuth.getInstance().getCurrentUser();
+        passid=userid;
 
+
+      //  Toast.makeText(getApplicationContext(),"passid is"+passid,Toast.LENGTH_LONG).show();
 
 
 studChatBtnSend.setOnClickListener(new View.OnClickListener() {
@@ -247,11 +379,15 @@ seenMessage(userid);
 
 DatabaseReference DbReference=fbDatabase.getReference();
 
+        String timestamp=String.valueOf(System.currentTimeMillis());
+
+
         HashMap <String,Object> ChatHashmap=new HashMap<>();
         ChatHashmap.put("sender",sender);
         ChatHashmap.put("receiver",receiver);
         ChatHashmap.put("message",message);
         ChatHashmap.put("isseen",false);
+        ChatHashmap.put("timestamp",timestamp);
 
 
         //set values of hashmap to db
@@ -309,6 +445,8 @@ DatabaseReference DbReference=fbDatabase.getReference();
                //clear list if data changes/new chat added
                 mchats.clear();
 
+
+
                 for (DataSnapshot snapshot:datasnapshot.getChildren() ){
                     //get all chats from databse
                     Chat chat=snapshot.getValue(Chat.class);
@@ -343,7 +481,7 @@ DatabaseReference DbReference=fbDatabase.getReference();
         HashMap<String,Object>hashMap=new HashMap<>();
         hashMap.put("status",status);
 
-        DbReference.updateChildren(hashMap);
+       // DbReference.updateChildren(hashMap);
 
     }
 

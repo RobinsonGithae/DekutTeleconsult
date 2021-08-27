@@ -1,8 +1,10 @@
 package com.example.dekutteleconsult;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,9 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dekutteleconsult.Adapter.MedicineListArrayAdapter;
-import com.example.dekutteleconsult.Adapter.PrescriptionListArrayAdapter;
-import com.example.dekutteleconsult.Model.Medicine;
-import com.example.dekutteleconsult.Model.Prescription;
+import com.example.dekutteleconsult.DataModel.Medicine;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -27,10 +27,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class AddMedicineActivity extends AppCompatActivity {
+
+    String[]DropdownMedicineOptions;
 
     TextView TVpattientName,TVpattientID,TVPrescriptionID,TVIssuingDate;
 
@@ -45,6 +46,34 @@ public class AddMedicineActivity extends AppCompatActivity {
     DatabaseReference addmedicineRef;
 
     List <Medicine>medicineList;
+
+
+    public void showExitPrompt(){
+
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setTitle("EXIT PRESCRIPTION");
+        builder.setMessage("Are you sure you want to Exit Prescribing? This will take you back to Chats. ");
+        builder.setPositiveButton("YES!!!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+                startActivity(new Intent(AddMedicineActivity.this,AllStudentChatListActivity.class));
+
+                finish();
+
+            }
+        }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.create().show();
+    }
+
 
 
     public boolean AllMedicineInputsAreValid() {
@@ -191,7 +220,8 @@ String medicineID=addmedicineRef.push().getKey();
         DrugNmeSpnr=(Spinner)findViewById(R.id.medicineNmSpnr);
         DrugTypeSpnr=(Spinner)findViewById(R.id.DrugtypeSpnr);
         DosageUnitsSpnr=(Spinner)findViewById(R.id.DoseUnitsSpnr);
-
+        DrugNmeSpnr.setPrompt("Select Medicine");
+        
         DoseQuantityET=(EditText) findViewById(R.id.doseQuantityET);
         DoseTimesOfTheDayET=(EditText)findViewById(R.id.doseTimesOftheDayET);
         drugIntakeDurationET=(EditText)findViewById(R.id.doseDurationET);
@@ -211,7 +241,14 @@ medicineList=new ArrayList<>();
                 @Override
                 public void onClick(View v) {
 
+             if (AllMedicineInputsAreValid()==true) {
+
                  addMedicine();
+             } else {
+                 Toast.makeText(getApplicationContext(),"Please Check Empty Medicine Fields",Toast.LENGTH_LONG).show();
+             }
+
+
 
 
                 }
@@ -236,7 +273,7 @@ medicineList=new ArrayList<>();
             ExitBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    finish();
+                    showExitPrompt();
                 }
             });
 

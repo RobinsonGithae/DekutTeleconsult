@@ -103,12 +103,14 @@
                         android:text="Drug Name:"
                         android:id="@+id/TVDrugLabel"
                         />
-                    <Spinner
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
                         android:id="@+id/medicineNmSpnr"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:entries="@array/medicines_arrays"
                         android:prompt="@string/medicnprompt"
+                        android:padding="5dp"
+
                         />
                 </LinearLayout>
 
@@ -130,10 +132,11 @@
                         />
                     <Spinner
                         android:id="@+id/DrugtypeSpnr"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:entries="@array/drug_type_arrays"
                         android:prompt="@string/drugtypeprompt"
+                        android:padding="5dp"
                         />
 
                 </LinearLayout>
@@ -149,10 +152,11 @@
                     />
                 <Spinner
                     android:id="@+id/DoseUnitsSpnr"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:entries="@array/dose_units_arrays"
                     android:prompt="@string/doseunitsprompt"
+                    android:padding="5dp"
                     />
 
 

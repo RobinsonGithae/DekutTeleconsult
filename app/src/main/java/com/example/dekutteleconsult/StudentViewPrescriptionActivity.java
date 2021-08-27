@@ -3,8 +3,8 @@ package com.example.dekutteleconsult;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -16,16 +16,13 @@ import android.graphics.pdf.PdfDocument;
 import android.os.Build;
 import android.os.Bundle;
 import android.print.PrintAttributes;
-import android.print.pdf.PrintedPdfDocument;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.dekutteleconsult.Adapter.MedicineListArrayAdapter;
-import com.example.dekutteleconsult.Model.Medicine;
-import com.google.android.material.dialog.MaterialDialogs;
-import com.google.errorprone.annotations.Var;
+import com.example.dekutteleconsult.DataModel.Medicine;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -45,6 +42,10 @@ public class StudentViewPrescriptionActivity extends AppCompatActivity {
 
     List<Medicine> medicineList;
     Button DownloadPDFBtn;
+
+
+
+
 
 
     public void showPrintingDialog(String Status){

@@ -5,12 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.dekutteleconsult.Adapter.UserAdapter;
-import com.example.dekutteleconsult.Model.Chatlist;
-import com.example.dekutteleconsult.Model.User;
+import com.example.dekutteleconsult.DataModel.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +26,7 @@ public class AllUsersActivity extends AppCompatActivity {
     private UserAdapter userAdapter;
     private List<User> mUsers;
 
-
+    FirebaseUser fUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +49,13 @@ public class AllUsersActivity extends AppCompatActivity {
 
     private void readUsers(){
        // mUsers=new ArrayList<>();
-        FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+       // FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+
+        fUser= FirebaseAuth.getInstance().getCurrentUser();
+        assert fUser != null;
+        final String myid=fUser.getUid();
+
+
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Users");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -65,13 +69,14 @@ public class AllUsersActivity extends AppCompatActivity {
 
 
                    assert user!=null;
-                   assert firebaseUser!=null;
-             //      if (!user.getId().equals(firebaseUser.getUid())){
+
+
+                  if (!(user.getId().equals(myid))){
                        mUsers.add(user);
-                 //  }
+                   }
 
                }
-
+//remember to set ischat to false
                userAdapter=new UserAdapter(getApplicationContext(),mUsers,true);
                recyclerView.setAdapter(userAdapter);
 
