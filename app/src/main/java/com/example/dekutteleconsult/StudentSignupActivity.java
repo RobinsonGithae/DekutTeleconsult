@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,18 +24,19 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class StudentSignupActivity extends AppCompatActivity {
 
     Button signupBtn;
-    EditText usernameET,emailET,passwrdET,confrmPasswrdET;
+    EditText usernameET,emailET,passwrdET,confrmPasswrdET,fullnameET,regnoET,yearofstudyET,phonenoET;
 
 
   FirebaseAuth fAuth;
   DatabaseReference reference;
   FirebaseFirestore fStore;
-  String studusermame,studpasswrd,studcnfrmpasswrd,studemail;
+  String studusermame,studpasswrd,studcnfrmpasswrd,studemail,studfullname,studregno,studyearofstudy,studphoneno;
 
 
   DatabaseReference studentsRef;
@@ -46,6 +48,11 @@ public class StudentSignupActivity extends AppCompatActivity {
       studemail=emailET.getText().toString().trim();
       studpasswrd= passwrdET.getText().toString().trim();
       studcnfrmpasswrd= confrmPasswrdET.getText().toString().trim();
+
+      studfullname= fullnameET.getText().toString().trim();
+      studregno=regnoET.getText().toString().trim();
+      studyearofstudy=yearofstudyET.getText().toString().trim();
+      studphoneno=phonenoET.getText().toString().trim();
 
   }
 
@@ -84,13 +91,14 @@ public class StudentSignupActivity extends AppCompatActivity {
                 //
                 UserInfoMap.put("email",studemail);
 
-                StudentInfoMap.put("fullName","default");
-                StudentInfoMap.put("regNo","default");
-                StudentInfoMap.put("yearOfStudy","default");
+
+
+                StudentInfoMap.put("fullName",studfullname);
+                StudentInfoMap.put("regNo",studregno);
+                StudentInfoMap.put("yearOfStudy",studyearofstudy);
                 StudentInfoMap.put("gender","default");
                 StudentInfoMap.put("DOBirth","default");
-
-                StudentInfoMap.put("phoneNo","default");
+                StudentInfoMap.put("phoneNo",studphoneno);
 
                 //save/write new user info Map data to firestore Users collection.
                 df.set(UserInfoMap);
@@ -168,7 +176,30 @@ return false;
             confrmPasswrdET.setError("Initial password & confirm must be same");
 return false;
 
-        } else{
+        }
+
+        if (TextUtils.isEmpty(fullnameET.getText().toString())){
+            fullnameET.setError("Fullname can`t be empty");
+            return false;
+        }
+
+
+        if (TextUtils.isEmpty(regnoET.getText().toString())){
+            regnoET.setError("RegNo can`t be empty");
+            return false;
+        }
+
+        if (TextUtils.isEmpty(yearofstudyET.getText().toString())){
+            yearofstudyET.setError("YearOfStudy can`t be empty");
+            return false;
+        }
+
+        if (TextUtils.isEmpty(phonenoET.getText().toString())){
+            phonenoET.setError("phoneNo can`t be empty");
+            return false;
+        }
+
+        else{
             return true;
         }
 
@@ -177,6 +208,17 @@ return false;
     }
 
 
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            //backbutton functionality
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 
 
@@ -187,6 +229,9 @@ return false;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_signup);
 
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+
         signupBtn=(Button)findViewById(R.id.btnStudSignup);
         usernameET=(EditText) findViewById(R.id.ETsignupUsrnm);
         passwrdET=(EditText)findViewById(R.id.ETStudsgnupPswd);
@@ -194,6 +239,10 @@ return false;
         emailET=(EditText)findViewById(R.id.ETStudsignupEmail);
 
 
+        fullnameET=(EditText) findViewById(R.id.ETsignupFullnm);
+        regnoET=(EditText) findViewById(R.id.ETsignupRegno);
+        yearofstudyET=(EditText) findViewById(R.id.ETsignupYearOfStudy);
+        phonenoET=(EditText) findViewById(R.id.ETsignupPhoneNo);
 
 
 

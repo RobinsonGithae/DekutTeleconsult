@@ -27,14 +27,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dekutteleconsult.DataModel.Chat;
 import com.example.dekutteleconsult.DoctorChatActivity;
 import com.example.dekutteleconsult.R;
-import com.example.dekutteleconsult.StudentChatActivity;
 import com.example.dekutteleconsult.ViewModel.ChatViewModel;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -61,8 +63,11 @@ public  static  final int MSG_TYPE_LEFT=0;
 
     ChatViewModel docchatViewModel;
 
-    ArrayList<Chat> selectList=new ArrayList<>();
+    private ArrayList<String> selectList=new ArrayList<>();
     Activity activity;
+
+
+    private int ViewHolderposition;
 
 
     public DocChatAdapter(Context mContext, List<Chat> mChats, String ImageURL ) {
@@ -228,13 +233,56 @@ if (position==mChats.size()-1){
 
                          switch (id){
                              case R.id.menu_delete:
-                                 //use for each loop to delete all selected chats
-                               showChatDeletionDialog();
 
-                                 for (Chat s: selectList){
-                              deleteChatFromFirebase(s);
-                                     //firebase functions to delete chats here
-                                 }
+
+                                         for (String s: selectList){
+                                             Toast.makeText(mContext,"Deleting chat TTTTTTT",Toast.LENGTH_LONG).show();
+
+                                             deleteChatFromFirebase(s);
+                                             //firebase functions to delete chats here
+                                         }
+
+//                                 Iterator<Chat>chatIterator=selectList.iterator();
+//                                         while (chatIterator.hasNext()){
+//                                             Toast.makeText(mContext,"Deleting at Iterator",Toast.LENGTH_LONG).show();
+//
+//                                         }
+
+
+//                                 //use for each loop to delete all selected chats
+//                                 MaterialAlertDialogBuilder builder=new MaterialAlertDialogBuilder(mContext);
+//                                 builder.setTitle("Delete Chats");
+//                                 builder.setMessage("Are you sure you want to delete selected chats ?");
+//                                 builder.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
+//                                     @Override
+//                                     public void onClick(DialogInterface dialog, int which) {
+//                                         Toast.makeText(mContext,"Deleting chat",Toast.LENGTH_LONG).show();
+//
+////                                         for (Chat s: selectList){
+////                                             //Toast.makeText(mContext,"Deleting chat",Toast.LENGTH_LONG).show();
+////
+////                                             deleteChatFromFirebase(s);
+////                                             //firebase functions to delete chats here
+////                                         }
+////for (int i=0;i<selectList.size();i++){
+////    Toast.makeText(mContext,"Looping at"+selectList.get(i) ,Toast.LENGTH_LONG).show();
+////
+////}
+//
+//
+//
+//
+//                                     }
+//                                 });
+//
+//                                 builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+//                                     @Override
+//                                     public void onClick(DialogInterface dialog, int which) {
+//
+//                                     }
+//                                 });
+//                                 builder.create().show();
+
 
                                  mode.finish();
 
@@ -310,43 +358,53 @@ holder.itemView.setOnClickListener(new View.OnClickListener() {
 
 
 
-
+passPosition(position);
 
     }
 
-    private void deleteChatFromFirebase(Chat s) {
-        showChatDeletionDialog();
+    public void passPosition(int position){
+        ViewHolderposition=position;
+
+    }
+
+
+    private void deleteChatFromFirebase(String id) {
+
+        DatabaseReference ChatDBRef;
+        ChatDBRef = FirebaseDatabase.getInstance().getReference("chats");
+
+      //  String id = mChats.get(ViewHolderposition).getChatid();
+        ChatDBRef.child(id).removeValue();
+
+        Chat chatAtViewHolderPosition = mChats.get(ViewHolderposition);
+        mChats.remove(chatAtViewHolderPosition);
+        mChats.clear();
+        notifyDataSetChanged();
+
 
     }
 
     private void showChatDeletionDialog() {
-        MaterialAlertDialogBuilder builder=new MaterialAlertDialogBuilder(mContext);
-        builder.setTitle("Delete Chats");
-        builder.setMessage("Are you sure you want to delete selected chats ?");
-        builder.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-               // deleteFromDB(s);
-            }
-        });
-
-
     }
 
-    private void deleteFromDB(Chat s) {
-    }
+
 
     private void clickItem(ViewHolder holder) {
         //get and highlight the selected item value
         //String s=selectList.get(holder.getAdapterPosition());
 
-       Chat s=mChats.get(holder.getAdapterPosition());
-
+      // Chat s=mChats.get(holder.getAdapterPosition());
+        String s=mChats.get(holder.getLayoutPosition()).getChatid();
 if (holder.selectedCheckImage.getVisibility()==View.GONE){
 
        holder.selectedCheckImage.setVisibility(View.VISIBLE);
         holder.itemView.setBackgroundColor(Color.LTGRAY);
 selectList.add(s);
+
+//if (selectList.isEmpty()){Toast.makeText(mContext,"select list is empty",Toast.LENGTH_LONG).show();
+//}else {Toast.makeText(mContext,"select list has the following number of items"+selectList.size(),Toast.LENGTH_LONG).show();
+//}
+
 }else {
 
     //if item is selected
@@ -354,7 +412,7 @@ selectList.add(s);
     holder.selectedCheckImage.setVisibility(View.GONE);
 
     holder.itemView.setBackgroundColor(Color.TRANSPARENT);
-selectList.remove(s);
+    selectList.remove(s);
 }
 
 docchatViewModel.setText(String.valueOf(selectList.size()));

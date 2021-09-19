@@ -7,7 +7,9 @@ import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
@@ -19,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.dekutteleconsult.DataModel.Doctor;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -29,7 +32,7 @@ public class DoctorDrawerActivity extends AppCompatActivity implements Navigatio
 
     public DrawerLayout mydrawer;
     public ActionBarDrawerToggle mydrawerToggle;
-    CardView AllconsultionsCrd,AllprescriptionsCrd, AllreportedEmrgncyCrd,DocNotificationsCrd,DocPrescribeCrd;
+    CardView AllconsultionsCrd, AllreportedEmrgncyCrd,DocHelpCrd;
 
     NavigationView navigationView;
 
@@ -38,7 +41,7 @@ public class DoctorDrawerActivity extends AppCompatActivity implements Navigatio
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.optionmenustudent,menu);
+        getMenuInflater().inflate(R.menu.optionmenudoctor,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -55,7 +58,7 @@ public class DoctorDrawerActivity extends AppCompatActivity implements Navigatio
 
         //get option menu items here
         switch (item.getItemId()) {
-            case R.id.itemDochelp:
+            case R.id.docNotifications:
                 //do something
 
                 Intent intnt=new Intent(DoctorDrawerActivity.this, HelpActivity.class);
@@ -64,8 +67,7 @@ public class DoctorDrawerActivity extends AppCompatActivity implements Navigatio
 
                 break;
             case R.id.quitapp:
-           //     Intent myintent2=new Intent(DoctorDrawerActivity.this, PinLoginActivity.class);
-           //     startActivity(myintent2);
+
 //                finish();
 
 
@@ -95,10 +97,8 @@ public class DoctorDrawerActivity extends AppCompatActivity implements Navigatio
         setContentView(R.layout.activity_doctor_drawer);
 
         AllconsultionsCrd= (CardView) findViewById(R.id.CrdConsultionsFromStudnt);
-        AllprescriptionsCrd=(CardView) findViewById(R.id.CrdAllPrescriptions);
         AllreportedEmrgncyCrd=(CardView) findViewById(R.id.CrdReportedEmergencys);
-        DocNotificationsCrd=(CardView) findViewById(R.id.CrdDocNotifications);
-        DocPrescribeCrd=(CardView) findViewById(R.id.prescribeCrd);
+        DocHelpCrd=(CardView) findViewById(R.id.helpCrd);
 
         AllconsultionsCrd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,13 +112,13 @@ public class DoctorDrawerActivity extends AppCompatActivity implements Navigatio
         });
 
 
-        AllprescriptionsCrd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //startActivity(new Intent(StudentDrawerActivity.this,StudentChatActivity.class));
-                startActivity(new Intent(DoctorDrawerActivity.this,AddPrescriptionActivity.class));
-            }
-        });
+//        AllprescriptionsCrd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //startActivity(new Intent(StudentDrawerActivity.this,StudentChatActivity.class));
+//               // startActivity(new Intent(DoctorDrawerActivity.this,AddPrescriptionActivity.class));
+//            }
+//        });
 
 
 
@@ -131,22 +131,11 @@ public class DoctorDrawerActivity extends AppCompatActivity implements Navigatio
         });
 
 
-        DocNotificationsCrd.setOnClickListener(new View.OnClickListener() {
+
+        DocHelpCrd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-               // startActivity(new Intent(DoctorDrawerActivity.this,AllStudentChatListActivity.class));
-
-            }
-        });
-
-
-
-        DocPrescribeCrd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(DoctorDrawerActivity.this,AddPrescriptionActivity.class));
+         startActivity(new Intent(DoctorDrawerActivity.this,HelpActivity.class));
 
             }
         });
@@ -242,5 +231,59 @@ public class DoctorDrawerActivity extends AppCompatActivity implements Navigatio
 
     }
 
+
+
+
+
+
+
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder exitBuilder=new AlertDialog.Builder(this);
+        exitBuilder.setTitle(" Exit Now? ");
+        exitBuilder.setMessage("Are you sure you want to exit. Clicking EXIT will sign you out of the APP");
+        exitBuilder.setPositiveButton("EXIT", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //logic to signout student Here
+                //first clear sharedpreferences that has login data saved in it
+
+                SharedPreferences sharedprefs= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor sharedprefsEditor=sharedprefs.edit();
+                sharedprefsEditor.clear();
+                sharedprefsEditor.apply();
+
+                //ALSO LOGOUT USER FROM DATABASE{FIREBASE)
+
+
+                //Firebase signout logic here
+                FirebaseAuth.getInstance().signOut();
+
+
+
+                //TAKE USER TO LOGIN ACTIVITY AUTOMATICALLY AFTER SIGNOUT is complete
+                Intent signoutintent3=new Intent(DoctorDrawerActivity.this, LoginAsActivity.class);
+                startActivity(signoutintent3);
+                //kill current activity(main) after signout using finish()
+                finish();
+                Toast.makeText(getApplicationContext(),"You were Signed out SUCCESSFULLY!",Toast.LENGTH_LONG).show();
+
+
+                DoctorDrawerActivity.super.onBackPressed();
+
+            }
+        });
+
+        exitBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(DoctorDrawerActivity.this, DoctorDrawerActivity.class));
+
+                DoctorDrawerActivity.super.onBackPressed();
+            }
+        });
+        exitBuilder.show();
+    }
 }
 

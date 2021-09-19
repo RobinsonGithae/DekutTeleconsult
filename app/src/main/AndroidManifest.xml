@@ -15,6 +15,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
@@ -22,25 +23,47 @@
     <uses-permission android:name="android.permission.REQUEST_COMPANION_USE_DATA_IN_BACKGROUND" />
 
     <application
+        android:name=".DekutTeleconsult"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/myAppTheme"
         android:usesCleartextTraffic="false"
-        tools:targetApi="m">
-        <activity android:name=".VideoCall2Activity"></activity>
-        <activity android:name=".VideoCallActivity" />
+        tools:targetApi="q">
+        <activity android:name=".FinalVideoCallActivity"></activity>
+        <activity
+            android:name=".DocAllPrescriptionsActivity"
+            android:label="All Prescriptions" />
+        <activity android:name=".VideoCallControlActivity" />
+        <activity android:name=".DownloadPrescriptionPDFActivity" />
+        <activity
+            android:name=".VideoCall2Activity"
+            android:label="Video Call" />
+        <activity
+            android:name=".VideoCallActivity"
+            android:label="Video Call" />
         <activity
             android:name=".DoctorChatActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".AllDoctorsActivity" />
-        <activity android:name=".HelpActivity" />
-        <activity android:name=".StudentViewPrescriptionActivity" />
-        <activity android:name=".AddMedicineActivity" />
-        <activity android:name=".AddPrescriptionActivity" />
+        <activity
+            android:name=".AllDoctorsActivity"
+            android:label="Available Doctors" />
+        <activity
+            android:name=".HelpActivity"
+            android:label="HELP" />
+        <activity
+            android:name=".StudentViewPrescriptionActivity"
+            android:label="View Prescriptions" />
+        <activity
+            android:name=".AddMedicineActivity"
+            android:label="ADD PRESCRIPTION MEDICINE" />
+        <activity
+            android:name=".AddPrescriptionActivity"
+            android:label="Prescribe" />
         <activity android:name=".DoctorDrawerActivity" />
         <activity android:name=".PayForConsultationActivity" />
         <activity android:name=".AllUsersActivity" />
@@ -53,48 +76,94 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".EmergencyMapTrackActivity" />
-        <activity android:name=".LoginWithActivity" />
-        <activity android:name=".DoctorsDashboardActivity" />
-        <activity android:name=".PinSettingsActivity" />
+        <activity
+            android:name=".EmergencyMapTrackActivity"
+            android:label="Track Emergencies" />
+        <activity
+            android:name=".LoginWithActivity"
+            android:label="Select Login Method" />
+        <activity
+            android:name=".DoctorsDashboardActivity"
+            android:label="Doctor`s Dashboard" />
+        <activity
+            android:name=".PinSettingsActivity"
+            android:label="PIN Settings" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".PinLoginActivity" />
-        <activity android:name=".DoctorgetAllEmergenciesActivity" />
-        <activity android:name=".StudentVideoCallActivity" />
-        <activity android:name=".DoctorGivePrescriptionActivity" />
-        <activity android:name=".DeveloperActivity" />
+        <activity
+            android:name=".PinLoginActivity"
+            android:label="PIN Login" />
+        <activity
+            android:name=".DoctorgetAllEmergenciesActivity"
+            android:label="All Emergencies" />
+        <activity
+            android:name=".StudentVideoCallActivity"
+            android:label="Video Call" />
+        <activity
+            android:name=".DoctorGivePrescriptionActivity"
+            android:label="Give Prescription" />
+        <activity
+            android:name=".DeveloperActivity"
+            android:label="Developer" />
         <activity android:name=".DoctorGetEmergencyTrackActivity" />
-        <activity android:name=".UserprofileActivity" />
-        <activity android:name=".AllStudentChatListActivity" />
+        <activity
+            android:name=".UserprofileActivity"
+            android:label="User Profile" />
+        <activity
+            android:name=".AllStudentChatListActivity"
+            android:label="Recent Chats with Students" />
         <activity
             android:name=".StudentChatActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ForgotPasswordSuccessActivity" />
-        <activity android:name=".ForgotPasswordActivity" />
-        <activity android:name=".SplashscreenActivity">
+        <activity
+            android:name=".ForgotPasswordSuccessActivity"
+            android:label="Forgot Password" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:label="Forgot Password" />
+        <activity
+            android:name=".SplashscreenActivity"
+            android:label=" ">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginAsActivity" />
+        <activity
+            android:name=".LoginAsActivity"
+            android:label="User Login" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".DoctorLoginActivity" />
-        <activity android:name=".RegisterAsActivity" />
-        <activity android:name=".StudentLoginActivity" />
-        <activity android:name=".StudentPrescriptionActivity" />
+        <activity
+            android:name=".DoctorLoginActivity"
+            android:label="User Login" />
+        <activity
+            android:name=".RegisterAsActivity"
+            android:label="Select User Type" />
+        <activity
+            android:name=".StudentLoginActivity"
+            android:label="User Login" />
+        <activity
+            android:name=".StudentPrescriptionActivity"
+            android:label="MY Prescriptions" />
         <activity android:name=".MedicalHistoryActivity" />
         <activity android:name=".SelfAssessmentActivity" />
-        <activity android:name=".ReportEmergencyActivity" />
-        <activity android:name=".ConsultViaActivity" />
+        <activity
+            android:name=".ReportEmergencyActivity"
+            android:label="Student Report Emergency" />
+        <activity
+            android:name=".ConsultViaActivity"
+            android:label="Select Consultation Method" />
         <activity android:name=".StudentDrawerActivity" />
-        <activity android:name=".DoctorSignupActivity" />
+        <activity
+            android:name=".DoctorSignupActivity"
+            android:label="Create Account" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".StudentSignupActivity" />
+        <activity
+            android:name=".StudentSignupActivity"
+            android:label="Create Account" />
 
         <service
             android:name=".Service.StudentLocationTrackService"

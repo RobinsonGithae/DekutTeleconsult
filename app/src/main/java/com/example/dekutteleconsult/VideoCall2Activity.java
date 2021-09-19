@@ -241,7 +241,7 @@ mRemoteView=null;
     private void joinChannel() {
 
         String token = getString(R.string.agora_access_token);
-        if (TextUtils.isEmpty(token) || TextUtils.equals(token, "0062b9e73d7d83848a1884afe449a6fe1abIACTRIBKrFO2ej4cY0y3xRAb92xG01xbYUrfthyf+jzCauIVUyEAAAAAEACcjToMAG0ZYQEAAQAAbRlh")) {
+        if (TextUtils.isEmpty(token) || TextUtils.equals(token, "0062b9e73d7d83848a1884afe449a6fe1abIADIPiRZRR/lHYtcQAFmr+ETte7tlctPsAqBjqQ0sGfNVOIVUyEAAAAAEAAY8Zr8AxE6YQEAAQACETph")) {
             token = null; // default, no token
         }
         mRtcEngine.joinChannel(token, "demoChannel1", "Extra Optional Data", 0);
@@ -308,6 +308,8 @@ mRemoteView=null;
         mRtcEngine.leaveChannel();
     }
 
+
+    //here
     public void onLocalAudioMuteClicked(View view) {
         mMuted = !mMuted;
         // Stops/Resumes sending the local audio stream.
@@ -315,6 +317,7 @@ mRemoteView=null;
         int res = mMuted ? R.drawable.btn_mute : R.drawable.btn_unmute;
         mMuteBtn.setImageResource(res);
     }
+
 
     public void onSwitchCameraClicked(View view) {
         // Switches between front and rear cameras.
@@ -354,6 +357,7 @@ mRemoteView=null;
         mSwitchCameraBtn.setVisibility(visibility);
     }
 
+
     private ViewGroup removeFromParent(VideoCanvas canvas) {
         if (canvas != null) {
             ViewParent parent = canvas.view.getParent();
@@ -386,7 +390,7 @@ mRemoteView=null;
         switchView(mRemoteVideo);
     }
 
-
+//here
 
 
 

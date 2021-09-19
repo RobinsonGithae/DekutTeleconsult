@@ -16,6 +16,7 @@ import android.graphics.pdf.PdfDocument;
 import android.os.Build;
 import android.os.Bundle;
 import android.print.PrintAttributes;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -33,6 +34,7 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class StudentViewPrescriptionActivity extends AppCompatActivity {
 
@@ -170,7 +172,9 @@ public class StudentViewPrescriptionActivity extends AppCompatActivity {
 
         try {
             // write the document content
+
             document.writeTo(new FileOutputStream(context.getExternalFilesDir(null)+"/"+date+"test.pdf"));
+
             //close dialog with custom defined method by passing any string other string.
             showPrintingDialog("CLOSE");
             Toast.makeText(getApplicationContext(),"PRESCRIPTION GENERATED SUCCESSFULLY",Toast.LENGTH_LONG).show();
@@ -227,6 +231,17 @@ public class StudentViewPrescriptionActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            //backbutton functionality
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
 
 
@@ -235,6 +250,10 @@ public class StudentViewPrescriptionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_view_prescription);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+
         DownloadPDFBtn=(Button)findViewById(R.id.DownloadPrescrptnBtn);
         LVprescribedmedicine=(ListView) findViewById(R.id.StudViewPrescrbdMedicineList);
 
@@ -276,6 +295,13 @@ public class StudentViewPrescriptionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                     convertPrescriptionToPDF();
+                    //uncomment above
+
+                   // startActivity(new Intent(StudentViewPrescriptionActivity.this,DownloadPrescriptionPDFActivity.class));
+
+
+
+
                 }
                 else {Toast.makeText(getApplicationContext(),"PDF Download is only available for Android 4.4 (KITKAT) DEVICES",Toast.LENGTH_LONG).show(); }
             }

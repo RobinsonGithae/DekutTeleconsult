@@ -26,7 +26,7 @@
         android:text="AS DOCTOR"
         android:textSize="16sp"
         android:textColor="#ffff"
-        android:background="#5353FE"
+        android:background="@color/colorCustomButton"
         android:textStyle="bold|italic"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
     <Button
         android:id="@+id/btnLoginAsStudent"
         android:text="AS STUDENT"
-        android:background="#5353FE"
+        android:background="@color/colorCustomButton"
         android:textSize="16sp"
         android:textColor="#FCF6F6"
         android:textStyle="bold|italic"

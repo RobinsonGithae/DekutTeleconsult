@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -27,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class StudentPrescriptionActivity extends AppCompatActivity {
 
@@ -48,137 +50,102 @@ public class StudentPrescriptionActivity extends AppCompatActivity {
 
 
 
-    public void searchViewFunction(){
 
-        androidx.appcompat.widget.SearchView prescrptnSearchView=(androidx.appcompat.widget.SearchView)findViewById(R.id.myPrescriptionSearchVw);
-        prescrptnSearchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+
+    public void searchPrescription(String srchTxt){
+        //student can search student by date
+
+
+        prescriptionLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Prescription  prescription= StudprescrptionList.get(position);
 
-                //searchPrescription(query);
+                Intent intent=new Intent(getApplicationContext(),StudentViewPrescriptionActivity.class);
 
-                return false;
-            }
+                intent.putExtra(PATIENT_ID,prescription.getPatientID());
+                intent.putExtra(PATIENT_NAME,prescription.getPatientName());
+                intent.putExtra(PRESCRIPTION_ID,prescription.getPrescriptionID());
+                intent.putExtra(PRESCRIPTION_DATE,prescription.getIssuingDate());
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                //searchPrescription(newText);
-                return false;
+                startActivity(intent);
             }
         });
 
-    }
 
-//
-//    public void searchPrescription(String srchTxt){
-//
-//
-//        prescriptionLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Prescription  prescription= StudprescrptionList.get(position);
-//
-//                Intent intent=new Intent(getApplicationContext(),StudentViewPrescriptionActivity.class);
-//
-//                intent.putExtra(PATIENT_ID,prescription.getPatientID());
-//                intent.putExtra(PATIENT_NAME,prescription.getPatientName());
-//                intent.putExtra(PRESCRIPTION_ID,prescription.getPrescriptionID());
-//                intent.putExtra(PRESCRIPTION_DATE,prescription.getIssuingDate());
-//
-//                startActivity(intent);
-//            }
-//        });
-//
-//
-//
-//
-//
+
 //
 //        //sick user is student
 //       FirebaseUser fbSickUser= FirebaseAuth.getInstance().getCurrentUser();
 //        assert fbSickUser != null;
 //        final String currentUserID=fbSickUser.getUid();
-//
-//        //testing
-//
-//
-//
-//
-//       DatabaseReference DbReference=FirebaseDatabase.getInstance().getReference("Prescriptions").child(currentUserID);
-//        DbReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                User userd=snapshot.getValue(User.class);
-//                assert user != null;
-//
-//
-//
-//
-//
-//
-//                Query chatSrchQuery=FirebaseDatabase.getInstance().getReference("chats").orderByChild("message").startAt(srchTxt).endAt(srchTxt+"\uf8ff");
-//
-//                chatSrchQuery.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//
-//                        //User user=snapshot.getValue(User.class);
-//                        assert user != null;
-//                        String imageurl=user.getImageURL();
-//
-//                        //clear list if data changes/new chat added
-//                        mchats.clear();
-//
-//
-//
-//                        for (DataSnapshot dataSnapshot:snapshot.getChildren() ){
-//                            //get all chats from databse
-//                            Chat chat=dataSnapshot.getValue(Chat.class);
-//                            assert chat != null;
-//                            if(chat.getReceiver().equals(myid)&& chat.getSender().equals(userid)|| chat.getReceiver().equals(userid) && chat.getSender().equals(myid)){
-//
-//                                //NOW get only add chat for the specific (receiver) user to the chats list
-//                                mchats.add(chat);
-//                            }
-//                            appchatAdapter=new ChatAdapter(StudentChatActivity.this,mchats,imageurl);
-//                            chatsRecyclrVw.setAdapter(appchatAdapter);
-//
-//                        }
-//
-//
-//
-//
-//
-//
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//
-//
-//
-//
-//
-//    }
-//
+
+        //testing
+        Query SrchPrescrptnQuery=FirebaseDatabase.getInstance().getReference("prescriptions").orderByChild("issuingDate").startAt(srchTxt).endAt(srchTxt+"\uf8ff");
+
+
+        SrchPrescrptnQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                StudprescrptionList.clear();
+                for (DataSnapshot prescriptionSnapshot:datasnapshot.getChildren()){
+                    Prescription prescription=prescriptionSnapshot.getValue(Prescription.class );
+
+                    // String sampleRegno="C025-01-1002/2018";
+                    assert prescription != null;
+                    if (prescription.getPatientID().equalsIgnoreCase(regNoStudent)){
+                        StudprescrptionList.add(prescription);
+                    }
+                }
+                //pass adapter to listview
+                PrescriptionListArrayAdapter prescriptionListAdapter=new PrescriptionListArrayAdapter(StudentPrescriptionActivity.this,StudprescrptionList);
+                prescriptionLV.setAdapter(prescriptionListAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            //backbutton functionality
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_prescription);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
 
         getRegnoAutomaticallyFromDB();
 
@@ -211,12 +178,41 @@ public class StudentPrescriptionActivity extends AppCompatActivity {
 
 
 
+//search prescription by date
+       // SearchView prescrptnSearchView= (SearchView) findViewById(R.id.myPrescriptionSearchVw);
+        StudprescrpSearchVw.setQueryHint("Search prescription by date");
+        StudprescrpSearchVw.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                searchPrescription(query);
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchPrescription(newText);
+                return false;
+            }
+        });
+
+
+
+
+
+
+
+
     }
 
 
     @Override
     protected void onStart() {
         super.onStart();
+
+//        if ()
+
 
         precriptionsRef.addValueEventListener(new ValueEventListener() {
             @Override

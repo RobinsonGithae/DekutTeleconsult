@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -38,6 +39,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -150,11 +152,28 @@ String UsernameUpdate,EmailUpdate,DOBUpdate,FullnameUpdate,YearOfStudyUpdate,Reg
 
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            //backbutton functionality
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userprofile);
 
-   imageProfile=(CircleImageView)findViewById(R.id.profileImage);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+
+        imageProfile=(CircleImageView)findViewById(R.id.profileImage);
    username=(TextView)findViewById(R.id.usernameTV);
         usernameET=(EditText) findViewById(R.id.profileUsernameET);
         emailET=(EditText)findViewById(R.id.profileEmailET);

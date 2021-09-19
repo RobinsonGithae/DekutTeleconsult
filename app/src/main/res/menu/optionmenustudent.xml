@@ -2,11 +2,6 @@
 
 
 
-    <item
-        android:title="Help"
-        android:id="@+id/itemhelp">
-    </item>
-
 
     <item
         android:title="Quit App"

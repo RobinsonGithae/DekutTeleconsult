@@ -12,5 +12,10 @@
 
 
 
+        <dimen name="log_container_width">240dp</dimen>
+        <dimen name="log_container_height">120dp</dimen>
+
+
+
 
 </resources>

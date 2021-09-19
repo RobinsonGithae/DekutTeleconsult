@@ -43,7 +43,7 @@ import java.util.Objects;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DoctorChatActivity extends AppCompatActivity {
-
+//activity of student chatting with and or to the doctor
     CircleImageView CIVprofilePic;
     TextView UsernameTV;
     EditText StudChatInputET;
@@ -132,9 +132,9 @@ public class DoctorChatActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
 
-                        Doctor doc=snapshot.getValue(Doctor.class);
-                        assert doc != null;
-                        String imageurl=doc.getImageURL();
+                       // Doctor doc=snapshot.getValue(Doctor.class);
+                        assert doctor != null;
+                        String imageurl=doctor.getImageURL();
 
                         //clear list if data changes/new chat added
                         mchats.clear();
@@ -195,15 +195,19 @@ public class DoctorChatActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.itemvideocall:
                 //do something
-                Intent intent=new Intent(DoctorChatActivity.this, StudentVideoCallActivity.class);
-                startActivity(intent);
+//                Intent intent=new Intent(DoctorChatActivity.this, StudentVideoCallActivity.class);
+//                startActivity(intent);
+               // startActivity(new Intent(DoctorChatActivity.this,VideoCallActivity.class));
+               // startActivity(new Intent(DoctorChatActivity.this,VideoCallControlActivity.class));
+
+                startActivity(new Intent(DoctorChatActivity.this,FinalVideoCallActivity.class));
 
 
                 break;
 
             case R.id.itemprescribe:
                 //do something
-                Intent intent2=new Intent(DoctorChatActivity.this, AddPrescriptionActivity.class);
+                Intent intent2=new Intent(DoctorChatActivity.this, StudentPrescriptionActivity.class);
                 startActivity(intent2);
 
 
@@ -232,6 +236,7 @@ public class DoctorChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_chat);
+
 
 
 
@@ -352,6 +357,8 @@ public class DoctorChatActivity extends AppCompatActivity {
     private void seenMessage(String userid){
 
         DbReference=FirebaseDatabase.getInstance().getReference("chats");
+        //sync data with firebase
+        DbReference.keepSynced(true);
         seenListener=DbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -445,6 +452,8 @@ public class DoctorChatActivity extends AppCompatActivity {
 //userid is sender ID
         mchats=new ArrayList<>();
         DbReference=FirebaseDatabase.getInstance().getReference("chats");
+        //sync data with firebase
+        DbReference.keepSynced(true);
         DbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
@@ -482,12 +491,12 @@ public class DoctorChatActivity extends AppCompatActivity {
 
 
     private void status(String status){
-        DbReference=FirebaseDatabase.getInstance().getReference("Doctors").child(fUser.getUid());
+        DbReference=FirebaseDatabase.getInstance().getReference("Users").child(fUser.getUid());
         //get online status
         HashMap<String,Object> hashMap=new HashMap<>();
         hashMap.put("status",status);
 
-      //  DbReference.updateChildren(hashMap);
+        DbReference.updateChildren(hashMap);
 
     }
 

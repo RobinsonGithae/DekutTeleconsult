@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -128,97 +126,7 @@
 
 
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:cardElevation="15dp"
-        app:cardCornerRadius="5dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="@drawable/cardviewripple"
 
-        android:background="@color/colorWhite"
-
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:id="@+id/CrdMedHstry"
-        >
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:background="@color/colorWhite"
-            android:orientation="vertical"
-            android:layout_height="wrap_content"
-            >
-
-            <TextView
-                android:id="@+id/medicalHstryTV"
-                android:layout_width="175dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="2dp"
-                android:background="@color/colorWhite"
-                android:fontFamily="casual"
-                android:gravity="center_horizontal|center_vertical"
-                android:padding="10dp"
-                android:text=" Medical History"
-                android:textAlignment="center"
-                android:textColor="#fdf205fa"
-                android:textSize="25sp"
-                android:textStyle="bold|italic"
-                android:layout_marginStart="2dp" />
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-
-
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:cardElevation="15dp"
-        app:cardCornerRadius="5dp"
-
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="@drawable/cardviewripple"
-
-        android:background="@color/colorWhite"
-
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:id="@+id/CrdMedProgress"
-        >
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:background="@color/colorWhite"
-            android:orientation="vertical"
-            android:layout_height="wrap_content"
-            >
-
-            <TextView
-                android:id="@+id/progresscrdTV"
-                android:layout_width="175dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="2dp"
-                android:background="@color/colorWhite"
-                android:fontFamily="casual"
-                android:gravity="center_horizontal|center_vertical"
-                android:padding="10dp"
-
-                android:text="Medication Progress"
-                android:textAlignment="center"
-                android:textColor="#fdf205fa"
-                android:textSize="25sp"
-
-
-                android:textStyle="bold|italic"
-                android:layout_marginStart="2dp" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
 
 
@@ -267,30 +175,34 @@
     </androidx.cardview.widget.CardView>
 
 
+
+
+
+
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardElevation="15dp"
         app:cardCornerRadius="5dp"
+
         android:clickable="true"
         android:focusable="true"
         android:foreground="@drawable/cardviewripple"
         android:background="@color/colorWhite"
-        android:layout_weight="0.5"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:id="@+id/CrdSelfAssmnt"
+        android:id="@+id/CrdStudHelp"
         >
-
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:background="@color/colorWhite"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            >
 
             <TextView
-                android:id="@+id/selfassmntTV"
+                android:id="@+id/StudHelpTV"
                 android:layout_width="175dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
@@ -300,7 +212,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:padding="10dp"
 
-                android:text="Self Assessment"
+                android:text="Help"
                 android:textAlignment="center"
                 android:textColor="#fdf205fa"
                 android:textSize="25sp"
@@ -310,6 +222,8 @@
                 android:layout_marginStart="2dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+
 
 
 

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:scrollbars="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,12 +15,18 @@
         android:layout_height="wrap_content"
         android:text="REGISTER STUDENT"
         android:textSize="25sp"
+        android:textStyle="bold"
+        android:fontFamily="cursive"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="0dp"
         android:textColor="@color/colorWhite"
         android:id="@+id/registStudTV"
 
         />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/signupcontainer"
@@ -73,7 +82,7 @@ android:id="@+id/StudSignUpusrnmeET"
             app:helperText="required*"
             app:helperTextTextColor="@color/colorGreen"
             app:hintTextColor="@color/colorGreen"
-            app:startIconDrawable="@drawable/ic_account"
+            app:startIconDrawable="@drawable/ic_email_white"
 
             >
 
@@ -104,19 +113,17 @@ android:id="@+id/StudSignUpusrnmeET"
             app:endIconMode="password_toggle"
             app:errorTextColor="@color/colorGreen"
             app:hintTextColor="@color/colorGreen"
-            app:startIconDrawable="@drawable/ic_password">
+            app:startIconDrawable="@drawable/ic_password_white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ETStudsgnupPswd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-
                 android:inputType="text"
-
                 android:maxLines="1"
                 android:textColorHighlight="#FFFFFF" />
         </com.google.android.material.textfield.TextInputLayout>
+
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -135,7 +142,7 @@ android:id="@+id/ETLytStudSgnUpCnfrmPsswrd"
             app:helperTextTextColor="@color/colorGreen"
             app:hintTextColor="@color/colorGreen"
 
-            app:startIconDrawable="@drawable/ic_password">
+            app:startIconDrawable="@drawable/ic_password_white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ETStudSignupconfirmPswrd"
@@ -145,23 +152,165 @@ android:id="@+id/ETLytStudSgnUpCnfrmPsswrd"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/btnStudSignup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:text="SIGN UP"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="25sp"
-            android:textStyle="bold"
 
-            />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputlayoutBorderColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:id="@+id/StudSignUpFullnmeET"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:hint="Full Name"
+            app:endIconMode="clear_text"
+            app:errorTextColor="@color/colorGreen"
+            app:helperText="required*"
+            app:helperTextTextColor="@color/colorGreen"
+            app:hintTextColor="@color/colorGreen"
+            app:startIconDrawable="@drawable/ic_account"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ETsignupFullnm"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputlayoutBorderColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:id="@+id/StudSignUpRegnoET"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:hint="RegNo e.g C025-01-0001/2021"
+            app:endIconMode="clear_text"
+            app:errorTextColor="@color/colorGreen"
+            app:helperText="required*"
+            app:helperTextTextColor="@color/colorGreen"
+            app:hintTextColor="@color/colorGreen"
+            app:startIconDrawable="@drawable/ic_regno_white"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ETsignupRegno"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputlayoutBorderColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:id="@+id/StudSignUpYearOfStudyET"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:hint="Year of study"
+            app:endIconMode="clear_text"
+            app:errorTextColor="@color/colorGreen"
+            app:helperText="required*"
+            app:helperTextTextColor="@color/colorGreen"
+            app:hintTextColor="@color/colorGreen"
+            app:startIconDrawable="@drawable/ic_yearofstudy_white"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ETsignupYearOfStudy"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputlayoutBorderColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:id="@+id/StudSignUpPhoneNoET"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:hint="PhoneNo"
+            app:endIconMode="clear_text"
+            app:errorTextColor="@color/colorGreen"
+            app:helperText="required*"
+            app:helperTextTextColor="@color/colorGreen"
+            app:hintTextColor="@color/colorGreen"
+            app:startIconDrawable="@drawable/ic_phone_white"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ETsignupPhoneNo"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
 
     </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <Button
+        android:id="@+id/btnStudSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="SIGN UP"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="25sp"
+        android:textStyle="bold"
+
+        />
 
 
 
 </LinearLayout>
+</ScrollView>

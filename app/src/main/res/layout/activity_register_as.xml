@@ -8,13 +8,15 @@
     tools:context=".RegisterAsActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:text="REGISTER"
         android:textStyle="bold|italic"
         android:id="@+id/TVRegister"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
+        android:textSize="50sp"
+        android:fontFamily="cursive"
         />
 
     <Button
@@ -23,8 +25,10 @@
         android:layout_marginTop="50dp"
         android:id="@+id/BtnAsDoctorSignup"
         android:text="As Doctor"
+        android:textSize="16sp"
         android:textStyle="bold|italic"
         android:textColor="@color/colorWhite"
+        android:background="@color/colorCustomButton"
         android:layout_gravity="center_horizontal"
 
         />
@@ -35,9 +39,12 @@
         android:layout_marginTop="10dp"
         android:id="@+id/BtnAsStudentSignup"
         android:text="As Student"
+        android:textSize="16sp"
         android:textStyle="bold|italic"
         android:textColor="@color/colorWhite"
+        android:background="@color/colorCustomButton"
         android:layout_gravity="center_horizontal"
+
         />
 
 </LinearLayout>

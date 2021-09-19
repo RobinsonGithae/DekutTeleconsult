@@ -58,7 +58,7 @@ String DR="DR. "+doctor.getUsername();
 
 //here
         if (doctor.getImageURL().equals("default")){
-holder.profile_pic.setImageResource(R.mipmap.ic_launcher_round);
+holder.profile_pic.setImageResource(R.drawable.doctor);
        }
 
        else {

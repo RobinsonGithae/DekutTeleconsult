@@ -3,10 +3,12 @@
     <string name="open">open</string>
     <string name="close">close</string>
 
+    <string name="disabled_medicines_report">Report</string>
+
 
     <string name="google_maps_key">AIzaSyALtGHBEeLu36rSoVEdI4uW-lwWuvi97QY</string>
     <string name="agora_app_id">2b9e73d7d83848a1884afe449a6fe1ab</string>
-    <string name="agora_access_token">0062b9e73d7d83848a1884afe449a6fe1abIACTRIBKrFO2ej4cY0y3xRAb92xG01xbYUrfthyf+jzCauIVUyEAAAAAEACcjToMAG0ZYQEAAQAAbRlh </string>
+    <string name="agora_access_token">0062b9e73d7d83848a1884afe449a6fe1abIADIPiRZRR/lHYtcQAFmr+ETte7tlctPsAqBjqQ0sGfNVOIVUyEAAAAAEAAY8Zr8AxE6YQEAAQACETph</string>
 
 
     <string name="agora_app_secret">1d33695a66294493845607953387418f</string>
@@ -54,6 +56,19 @@
         <item> Penicillin 250mg </item>
         <item> Phenobarbital 4mg </item>
         <item> Rituximab 85mg </item>
+
+        <item> Xanax 255mg </item>
+        <item> Quinidine 180mg </item>
+        <item> Warfarin 450mg </item>
+        <item> Yodoxin(iodoquinol-Oral) 25mg </item>
+        <item> Ursodiol 47mg </item>
+        <item> Ibuprofen 200mg </item>
+        <item> Iron-Suppliment-oral 10mg </item>
+        <item> Jantoven 60mg </item>
+        <item> Quinapril 230mg </item>
+        <item> Tamoxifen 80mg </item>
+        <item> Zaditor 140mg </item>
+        <item> Zithromax 280mg </item>
 
 
     </string-array>

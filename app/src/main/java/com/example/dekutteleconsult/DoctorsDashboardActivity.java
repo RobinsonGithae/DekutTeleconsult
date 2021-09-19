@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class DoctorsDashboardActivity extends AppCompatActivity {
-    CardView DocconsultationsCrd,DocPrescribeCrd,DocReprtedEmergCrd,DocnotificationsCrd,DocAllPrescrptnCrd;
+    CardView DocconsultationsCrd,DocHelpCrd,DocReprtedEmergCrd,DocAllPrescrptnCrd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,10 +17,10 @@ public class DoctorsDashboardActivity extends AppCompatActivity {
 
 
         DocconsultationsCrd=(CardView)findViewById(R.id.CrdConsultionsFromStudnt);
-        DocPrescribeCrd=(CardView)findViewById(R.id.prescribeCrd);
+        DocHelpCrd=(CardView)findViewById(R.id.helpCrd);
         DocReprtedEmergCrd=(CardView)findViewById(R.id.CrdReportedEmergencys);
-        DocnotificationsCrd=(CardView)findViewById(R.id.CrdDocNotifications);
-        DocAllPrescrptnCrd=(CardView)findViewById(R.id.CrdAllPrescriptions);
+
+
         DocconsultationsCrd.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -54,7 +54,7 @@ public class DoctorsDashboardActivity extends AppCompatActivity {
 
 
 
-        DocnotificationsCrd.setOnClickListener(new View.OnClickListener() {
+        DocHelpCrd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

@@ -4,18 +4,21 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/colorBlue">
+    android:background="@color/colorBlue"
+
+    >
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="200dp"
         android:layout_height="150dp"
-        android:src="@mipmap/ic_launcher_round"
+        android:src="@drawable/physician"
         android:paddingTop="16dp"
         android:scaleType="centerCrop"
         android:layout_gravity="center_horizontal"
         android:paddingBottom="10dp"
-        app:civ_border_color="#FEFCFD"
+        app:civ_border_color="@color/colorPurple"
         app:civ_border_width="3dp"
+        android:background="@drawable/doctor"
         android:id="@+id/DocprofileImage"
 
         />
@@ -28,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="profile"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/colorPurple"
         android:textSize="25sp"
         />
 

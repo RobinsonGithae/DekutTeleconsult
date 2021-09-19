@@ -1,7 +1,7 @@
 package com.example.dekutteleconsult.DataModel;
 
 public class Medicine {
-
+    private String medicineID;
     private String drugName;
     private String drugType;
     private String drugDoseUnit;
@@ -11,6 +11,18 @@ public class Medicine {
 
 
     public Medicine(String drugName, String drugType, String drugDoseUnit, String drugDosage, String drugIntakeDuration, String drugInstruction) {
+      //First constructor
+        this.drugName = drugName;
+        this.drugType = drugType;
+        this.drugDoseUnit = drugDoseUnit;
+        this.drugDosage = drugDosage;
+        this.drugIntakeDuration = drugIntakeDuration;
+        this.drugInstruction = drugInstruction;
+    }
+
+    public Medicine(String DrugID, String drugName, String drugType, String drugDoseUnit, String drugDosage, String drugIntakeDuration, String drugInstruction) {
+       //second constructor
+        this.medicineID = DrugID;
         this.drugName = drugName;
         this.drugType = drugType;
         this.drugDoseUnit = drugDoseUnit;
@@ -20,8 +32,16 @@ public class Medicine {
     }
 
     public Medicine() {
+        //DEFAULT CONSTRUCTOR
     }
 
+    public String getMedicineID() {
+        return medicineID;
+    }
+
+    public void setMedicineID(String medicineID) {
+        this.medicineID = medicineID;
+    }
 
     public String getDrugName() {
         return drugName;

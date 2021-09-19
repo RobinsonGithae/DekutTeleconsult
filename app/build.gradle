@@ -78,8 +78,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:22.0.0'
 
 
-
-
+    implementation 'com.itextpdf:itextg:5.5.10'
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
 
 
     testImplementation 'junit:junit:4.12'

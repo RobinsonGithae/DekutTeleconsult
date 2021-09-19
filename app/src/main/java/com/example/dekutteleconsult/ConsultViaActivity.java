@@ -56,8 +56,12 @@ public class ConsultViaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
               //  startActivity(new Intent(ConsultViaActivity.this,StudentVideoCallActivity.class));
-                startActivity(new Intent(ConsultViaActivity.this,VideoCall2Activity.class));
+               // startActivity(new Intent(ConsultViaActivity.this,VideoCall2Activity.class));
+               // startActivity(new Intent(ConsultViaActivity.this,VideoCallActivity.class));
 
+               // startActivity(new Intent(ConsultViaActivity.this,VideoCallControlActivity.class));
+
+                startActivity(new Intent(ConsultViaActivity.this,FinalVideoCallActivity.class));
 
             }
         });

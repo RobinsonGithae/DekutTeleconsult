@@ -13,6 +13,8 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.chaos.view.PinView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -33,7 +35,16 @@ public class PinLoginActivity extends AppCompatActivity {
     public void ValidatePinThenLogin(){
 
         if (EnteredPinIsValid()){
-            LoginWithPin();
+            //CHECK IF USER IS LOGGED IN
+
+            FirebaseUser student= FirebaseAuth.getInstance().getCurrentUser();
+            if (student!=null){
+
+                LoginWithPin();
+            } else {
+                Toast.makeText(getApplicationContext(),"You were Signed out previously. You must Login with password first after signout to use the PIN Login the next time you log in",Toast.LENGTH_LONG).show();
+            }
+
         }
 
     }

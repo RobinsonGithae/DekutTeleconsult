@@ -56,8 +56,10 @@ private boolean ischat;
 
 //here
         if (user.getImageURL().equals("default")){
-holder.profile_pic.setImageResource(R.mipmap.ic_launcher_round);
-       }
+//holder.profile_pic.setImageResource(R.mipmap.ic_launcher_round);
+            holder.profile_pic.setImageResource(R.drawable.graduate);
+
+        }
 
        else {
 Glide.with(mContext).load(user.getImageURL()).into(holder.profile_pic);

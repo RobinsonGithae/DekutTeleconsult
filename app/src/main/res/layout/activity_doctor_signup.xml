@@ -11,6 +11,8 @@
         android:layout_height="wrap_content"
         android:text="REGISTER DOCTOR"
         android:textSize="25sp"
+        android:textStyle="bold"
+        android:fontFamily="cursive"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="0dp"
         android:textColor="@color/colorWhite"

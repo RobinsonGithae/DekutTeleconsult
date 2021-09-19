@@ -8,7 +8,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -18,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.dekutteleconsult.Adapter.MedicineListArrayAdapter;
 import com.example.dekutteleconsult.DataModel.Medicine;
+import com.example.dekutteleconsult.DataModel.Prescription;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class AddMedicineActivity extends AppCompatActivity {
 
@@ -46,6 +51,19 @@ public class AddMedicineActivity extends AppCompatActivity {
     DatabaseReference addmedicineRef;
 
     List <Medicine>medicineList;
+
+    public  String ToDeleteMEDICINE_ID="";
+    public  String ToDeleteMEDICINE_NAME="";
+    public  String ToUpdateMEDICINE_ID="";
+
+
+
+    //each medicine added is allocated a unique prescription_id
+    //(THIS_PRESCRIPTION_ID) is the id of the prescription that contains the medicine we want
+    // to delete or update
+    public  String THIS_PRESCRIPTION_ID="";
+
+
 
 
     public void showExitPrompt(){
@@ -180,7 +198,7 @@ String medicineID=addmedicineRef.push().getKey();
         String drugIntakeDuration=DrugIntakeDuration;
         String drugInstruction=DrugInstructions;
 
-        Medicine medicine=new Medicine(drugName,drugType,drugDoseUnit,drugDosage,drugIntakeDuration,drugInstruction);
+        Medicine medicine=new Medicine(medicineID,drugName,drugType,drugDoseUnit,drugDosage,drugIntakeDuration,drugInstruction);
         assert medicineID != null;
         addmedicineRef.child(medicineID).setValue(medicine).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
@@ -203,6 +221,17 @@ String medicineID=addmedicineRef.push().getKey();
     }
 
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            //backbutton functionality
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
 
 
@@ -212,7 +241,11 @@ String medicineID=addmedicineRef.push().getKey();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_medicine);
 
-        TVpattientName=(TextView)findViewById(R.id.TvPatientNameLabel);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+
+
+            TVpattientName=(TextView)findViewById(R.id.TvPatientNameLabel);
         TVpattientID=(TextView)findViewById(R.id.TvPatientIDLabel);
         TVPrescriptionID=(TextView)findViewById(R.id.TvPrescriptionIDLabel);
         TVIssuingDate=(TextView)findViewById(R.id.TvMedcneIssueDateLabel);
@@ -234,7 +267,7 @@ String medicineID=addmedicineRef.push().getKey();
 
         LVaddedmedicine=(ListView) findViewById(R.id.addedMedicineLst);
 
-medicineList=new ArrayList<>();
+      medicineList=new ArrayList<>();
 
 
             AddPrescrbdDrugBtn.setOnClickListener(new View.OnClickListener() {
@@ -308,10 +341,13 @@ medicineList=new ArrayList<>();
         String prescriptionID=intent.getStringExtra(AddPrescriptionActivity.PRESCRIPTION_ID);
 
 
+        //assign PrescriptionID of the Prescription Containning the medicines being added
+        THIS_PRESCRIPTION_ID=prescriptionID;
+
         String patName="Patient Name: "+patientName;
         String patID="RegNo: "+patientId;
         String prescID="PrescriptionID: "+prescriptionID;
-       String prescrpDate="Date: "+PrescriptionDate;
+        String prescrpDate="Date: "+PrescriptionDate;
 
 
 
@@ -326,5 +362,104 @@ medicineList=new ArrayList<>();
 
 
 
+
+            registerForContextMenu(LVaddedmedicine);
+
     }
+
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.setHeaderTitle("Select Action");
+        menu.add(0,v.getId(),0,"Delete");
+        menu.add(0,v.getId(),0,"Update");
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        AdapterView.AdapterContextMenuInfo contextMenuInfo=(AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+        int itemPosition=contextMenuInfo.position;
+        Medicine medicine= medicineList.get(itemPosition);
+
+        ToDeleteMEDICINE_ID=medicine.getMedicineID();
+        ToDeleteMEDICINE_NAME=medicine.getDrugName();
+        ToUpdateMEDICINE_ID=medicine.getMedicineID();
+
+        if (item.getTitle()=="Delete"){
+            showMedicineDeletePrompt();
+
+
+        }else if(item.getTitle()=="Update"){
+            updateMedicine();
+        }
+
+
+        return super.onContextItemSelected(item);
+    }
+
+
+
+
+    public void showMedicineDeletePrompt(){
+
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setTitle("DELETE MEDICINE");
+        builder.setMessage("Are you sure you want to delete the Medicine " +ToDeleteMEDICINE_NAME+ " from this prescription?");
+        builder.setPositiveButton("YES!!!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                deleteMedicine();
+
+            }
+        }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.create().show();
+    }
+
+    public void deleteMedicine(){
+        //retrieve prescrpid from intent
+
+        //use remove to delete  medicine from the prescription with its medID
+
+        DatabaseReference medicinesRef=FirebaseDatabase.getInstance().getReference("medicines").child(THIS_PRESCRIPTION_ID).child(ToDeleteMEDICINE_ID);
+        //delete the medicine
+        medicinesRef.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(getApplicationContext(),"Medicine deleted successfully",Toast.LENGTH_LONG).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(),"Failed to delete Medicine from prescription because "+e.getMessage()+"TRY LATER",Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
+
+
+    }
+
+    private void updateMedicine() {
+        //todo updatemedicine
+    }
+
+
+
+
+
+
+
+
+
+
 }

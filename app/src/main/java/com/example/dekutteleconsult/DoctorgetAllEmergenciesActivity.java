@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.dekutteleconsult.Adapter.EmergencyAdapter;
 import com.example.dekutteleconsult.DataModel.Emergency;
@@ -17,6 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class DoctorgetAllEmergenciesActivity extends AppCompatActivity {
 
@@ -27,6 +29,17 @@ public class DoctorgetAllEmergenciesActivity extends AppCompatActivity {
     List<Emergency> mEmergencies;
     RecyclerView mEmergenciesRecyclrVw;
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            //backbutton functionality
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
 
 
@@ -34,6 +47,9 @@ public class DoctorgetAllEmergenciesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctorget_all_emergencies);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
 
         mEmergenciesRecyclrVw=findViewById(R.id.emergencyListRecyclr);
         mEmergenciesRecyclrVw.setHasFixedSize(true);

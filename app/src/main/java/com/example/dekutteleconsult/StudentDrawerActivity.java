@@ -32,7 +32,7 @@ public class StudentDrawerActivity extends AppCompatActivity implements Navigati
 
     public DrawerLayout mydrawer;
     public ActionBarDrawerToggle mydrawerToggle;
-    CardView consultCrd,prescriptionCrd,medcalHstryCrd,medcationPrgrsCrd, rprtEmrgncyCrd,slfAssmntCrd;
+    CardView consultCrd,prescriptionCrd,rprtEmrgncyCrd,studhlpCrd;
 
     NavigationView navigationView;
 //    FirebaseAuth fAuth;
@@ -66,18 +66,11 @@ public class StudentDrawerActivity extends AppCompatActivity implements Navigati
 
         //get option menu items here
         switch (item.getItemId()) {
-            case R.id.itemhelp:
 
-                Intent intent=new Intent(StudentDrawerActivity.this, HelpActivity.class);
-                startActivity(intent);
-
-
-                break;
 
             case R.id.studNotifications:
                 //do something
-//                Intent intent3=new Intent(StudentDrawerActivity.this, AllStudentChatListActivity.class);
-//                startActivity(intent3);
+
 
                 break;
 
@@ -122,10 +115,10 @@ public class StudentDrawerActivity extends AppCompatActivity implements Navigati
 
                 consultCrd= (CardView) findViewById(R.id.CrdConsult);
                 prescriptionCrd=(CardView) findViewById(R.id.CrdPrescrption);
-                medcalHstryCrd=(CardView) findViewById(R.id.CrdMedHstry);
-                medcationPrgrsCrd=(CardView) findViewById(R.id.CrdMedProgress);
                 rprtEmrgncyCrd=(CardView) findViewById(R.id.CrdRprtEmergncy);
-                slfAssmntCrd=(CardView) findViewById(R.id.CrdSelfAssmnt);
+
+                studhlpCrd=(CardView) findViewById(R.id.CrdStudHelp);
+
 
                 consultCrd.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -149,39 +142,26 @@ public class StudentDrawerActivity extends AppCompatActivity implements Navigati
         });
 
 
-        medcalHstryCrd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              //  startActivity(new Intent(StudentDrawerActivity.this,AllStudentChatListActivity.class));
-                startActivity(new Intent(StudentDrawerActivity.this,AllStudentChatListActivity.class));
-
-            }
-        });
 
 
         rprtEmrgncyCrd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-               // startActivity(new Intent(StudentDrawerActivity.this,ReportEmergencyActivity.class));
-
-                startActivity(new Intent(StudentDrawerActivity.this,VideoCallActivity.class));
+                startActivity(new Intent(StudentDrawerActivity.this,ReportEmergencyActivity.class));
+               // startActivity(new Intent(StudentDrawerActivity.this,VideoCallActivity.class));
 
 
             }
         });
 
 
-        slfAssmntCrd.setOnClickListener(new View.OnClickListener() {
+
+        studhlpCrd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-           //     startActivity(new Intent(StudentDrawerActivity.this,StudentChatActivity.class));
-                startActivity(new Intent(StudentDrawerActivity.this,AllDoctorsActivity.class));
-
-
+                startActivity(new Intent(StudentDrawerActivity.this, HelpActivity.class));
             }
         });
 
@@ -343,11 +323,58 @@ public class StudentDrawerActivity extends AppCompatActivity implements Navigati
 
         mydrawer.closeDrawer(GravityCompat.START);
 
-
         return false;
 
 
     }
 
 
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder exitBuilder=new AlertDialog.Builder(this);
+        exitBuilder.setTitle(" Exit Now? ");
+        exitBuilder.setMessage("Are you sure you want to exit. Clicking EXIT will sign you out of the APP");
+        exitBuilder.setPositiveButton("EXIT", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //logic to signout student Here
+                //first clear sharedpreferences that has login data saved in it
+
+                SharedPreferences sharedprefs= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor sharedprefsEditor=sharedprefs.edit();
+                sharedprefsEditor.clear();
+                sharedprefsEditor.apply();
+
+                //ALSO LOGOUT USER FROM DATABASE{FIREBASE)
+
+
+                //Firebase signout logic here
+                FirebaseAuth.getInstance().signOut();
+
+
+
+                //TAKE USER TO LOGIN ACTIVITY AUTOMATICALLY AFTER SIGNOUT is complete
+                Intent signoutintent2=new Intent(StudentDrawerActivity.this, LoginAsActivity.class);
+                startActivity(signoutintent2);
+                //kill current activity(main) after signout using finish()
+                finish();
+                Toast.makeText(getApplicationContext(),"You were Signed out SUCCESSFULLY!",Toast.LENGTH_LONG).show();
+
+
+                StudentDrawerActivity.super.onBackPressed();
+
+            }
+        });
+
+        exitBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+              startActivity(new Intent(StudentDrawerActivity.this,StudentDrawerActivity.class));
+
+              StudentDrawerActivity.super.onBackPressed();
+            }
+        });
+        exitBuilder.show();
+    }
 }

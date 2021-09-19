@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.dekutteleconsult.Adapter.UserAdapter;
 import com.example.dekutteleconsult.DataModel.Chatlist;
@@ -20,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ChatListActivity extends AppCompatActivity {
     private RecyclerView ChatListRcycler;
@@ -30,9 +32,24 @@ public class ChatListActivity extends AppCompatActivity {
     DatabaseReference reference;
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            //backbutton functionality
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_list);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         ChatListRcycler = (RecyclerView) findViewById(R.id.ChatListRecyclervw);
         ChatListRcycler.setHasFixedSize(true);

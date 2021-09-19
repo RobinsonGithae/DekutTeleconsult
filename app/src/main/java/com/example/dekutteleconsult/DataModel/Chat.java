@@ -7,6 +7,7 @@ public class Chat {
     private String message=" ";
     private boolean isseen;
     private String timestamp=" ";
+    private String Chatid="";
 
     public Chat(String sender, String receiver, String message,boolean isseen, String time) {
         this.Sender = sender;
@@ -16,8 +17,28 @@ public class Chat {
         this.timestamp=time;
     }
 
+
+    public Chat(String idchat, String sender, String receiver, String message,boolean isseen, String time) {
+        this.Sender = sender;
+        this.Receiver = receiver;
+        this.message = message;
+        this.isseen=isseen;
+        this.timestamp=time;
+        this.Chatid=idchat;
+    }
+
+
+
     public Chat() {
         //default cnstructor
+    }
+
+    public String getChatid() {
+        return Chatid;
+    }
+
+    public void setChatid(String chatid) {
+        Chatid = chatid;
     }
 
     public boolean isIsseen() {

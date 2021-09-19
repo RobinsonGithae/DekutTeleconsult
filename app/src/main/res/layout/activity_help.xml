@@ -20,7 +20,7 @@
 <EditText
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:hint="Type your Issue here and click SUBMIT incase you are facing system related problem(s)"
+    android:hint="Type your Issue here and click SUBMIT.Then choose your default email app and send your issue incase you are facing system related problem(s)"
     android:id="@+id/DstbngIssueET"
     android:maxLines="10"
     android:textColor="@color/colorDarkBlue"
@@ -32,7 +32,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:id="@+id/btnSubmitIssue"
-        android:text="SUBMIT"
+        android:text="SUBMIT ISSUE"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/colorWhite"
         />

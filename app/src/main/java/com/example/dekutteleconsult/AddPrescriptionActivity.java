@@ -37,30 +37,21 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class AddPrescriptionActivity extends AppCompatActivity {
-
-
-
-
     public static final String PRESCRIPTION_ID="prescriptionid";
     public static final String PATIENT_NAME="patientname";
     public static final String PATIENT_ID="patientid";
     public static final String PRESCRIPTION_DATE="prescriptiondate";
 
-
     public  String ToDeletePRESCRIPTION_ID="";
     public  String ToUpdatePRESCRIPTION_ID="";
 
 
-String studentFullName,studentRegNo;
-
-
-
-
+    String studentFullName,studentRegNo;
 
     Button addPrescriptionBtn;
-    DatePicker prescriptionDatePicker;
 
     EditText patientNameET,ETpatientID,ETIntakeDuration,ETNoOfMedcneInPrescrptn;
     TextView DateTV;
@@ -77,11 +68,12 @@ String studentFullName,studentRegNo;
 
 
     public void automaticallyGetPatientDetailsFromDB(){
-Bundle bundle=getIntent().getExtras();
+       Bundle bundle=getIntent().getExtras();
 
-if (bundle!=null){
-    passedid=bundle.getString("passedid");
-}
+     if (bundle!=null)
+     {
+         passedid=bundle.getString("passedid");
+     }
 
 
       //   Toast.makeText(getApplicationContext(),"passed id is"+passedid,Toast.LENGTH_LONG).show();
@@ -100,8 +92,6 @@ if (bundle!=null){
                 patientNameET.setText(studentFullName);
                 ETpatientID.setText(studentRegNo);
 
-
-
             }
 
 
@@ -116,15 +106,13 @@ getCurrentSystemsDateAutomatically();
 
     public void getCurrentSystemsDateAutomatically(){
 
-
-
         rawSystemtime=String.valueOf(System.currentTimeMillis());
       //convert timestamp to dd/mm/yyyy hh:mm am/pm
         Calendar calendar=Calendar.getInstance(Locale.ENGLISH);
         calendar.setTimeInMillis(Long.parseLong(rawSystemtime));
 
         PrescriptionDateTime= DateFormat.format("dd/MM/yyyy hh:mm aa",calendar).toString();
-String DateLabel="Todays Date: "+PrescriptionDateTime;
+        //String DateLabel="Todays Date: "+PrescriptionDateTime;
         DateTV.setText(PrescriptionDateTime);
         Toast.makeText(getApplicationContext(),"raw date is "+PrescriptionDateTime,Toast.LENGTH_LONG).show();
 
@@ -132,21 +120,18 @@ String DateLabel="Todays Date: "+PrescriptionDateTime;
     }
 
     public Boolean prescriptionInputFieldsDataValid(){
-        // method to ensure inputs are valid
+        // method to ensure  prescription inputs are valid
         if ((patientNameET.getText().toString().trim().isEmpty())){
-
            patientNameET.setError("Patient name is empty. Enter All Fields");
             return false;
         }
 
         if ((ETpatientID.getText().toString().trim().isEmpty())){
-
             patientNameET.setError("Patient ID/Reg No is empty. Enter All Fields");
             return false;
         }
 
         if ((ETIntakeDuration.getText().toString().trim().isEmpty())){
-
             patientNameET.setError("Prescription Duration  is empty. Enter All Fields");
             return false;
         }
@@ -157,10 +142,6 @@ String DateLabel="Todays Date: "+PrescriptionDateTime;
             patientNameET.setError("Patient name is empty.Enter All Fields");
             return false;
         }
-
-
-
-
 
         return true;
     }
@@ -230,19 +211,41 @@ String DateLabel="Todays Date: "+PrescriptionDateTime;
 
     }
 
+
+
+
+
     public void updatePrescription(){
-
-
+//todo firebase update method here
         Toast.makeText(getApplicationContext(),"UPDATED",Toast.LENGTH_LONG).show();
 
-
     }
+
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_prescription);
+
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+
+
 
         precriptionsRef= FirebaseDatabase.getInstance().getReference("prescriptions");
 
@@ -257,7 +260,7 @@ String DateLabel="Todays Date: "+PrescriptionDateTime;
 
         automaticallyGetPatientDetailsFromDB();
 
-prescriptionList=new ArrayList<>();
+        prescriptionList=new ArrayList<>();
 
 
          addPrescriptionBtn.setOnClickListener(new View.OnClickListener() {
@@ -331,6 +334,8 @@ prescriptionList=new ArrayList<>();
         return super.onContextItemSelected(item);
     }
 
+
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -367,20 +372,6 @@ prescriptionList=new ArrayList<>();
         String patientName=patientNameET.getText().toString();
         int noOfMedicine=Integer.parseInt(ETNoOfMedcneInPrescrptn.getText().toString());
         int durationInDays=Integer.parseInt(ETIntakeDuration.getText().toString());
-
-
-//        Datepicker code
-//        int day=prescriptionDatePicker.getDayOfMonth();
-//        int month=prescriptionDatePicker.getMonth();
-//        int year=prescriptionDatePicker.getYear();
-//        Calendar calendar=Calendar.getInstance();
-//        calendar.set(year,month,day);
-////convert date to string
-//       Date date1=(Date)new Date(year,month,day);
-//
-//        java.text.SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-//        String dateString=sdf.format(date1);
-
 
 
 if (!TextUtils.isEmpty(patientName)){

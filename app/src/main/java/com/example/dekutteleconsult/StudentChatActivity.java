@@ -105,6 +105,8 @@ String passid;
 
         assert userid != null;
         DbReference=FirebaseDatabase.getInstance().getReference("Users").child(userid);
+       //sync data with firebase
+        DbReference.keepSynced(true);
         DbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -187,8 +189,13 @@ String passid;
         switch (item.getItemId()) {
             case R.id.itemvideocall:
                 //do something
-                Intent intent=new Intent(StudentChatActivity.this, StudentVideoCallActivity.class);
-                startActivity(intent);
+//                Intent intent=new Intent(StudentChatActivity.this, StudentVideoCallActivity.class);
+//                startActivity(intent);
+               // startActivity(new Intent(StudentChatActivity.this,VideoCallActivity.class));
+               // startActivity(new Intent(StudentChatActivity.this,VideoCallControlActivity.class));
+                startActivity(new Intent(StudentChatActivity.this,FinalVideoCallActivity.class));
+
+
 
 
                 break;
@@ -346,6 +353,8 @@ seenMessage(userid);
     private void seenMessage(String userid){
 
         DbReference=FirebaseDatabase.getInstance().getReference("chats");
+        //sync data with firebase
+        DbReference.keepSynced(true);
         seenListener=DbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -439,6 +448,8 @@ DatabaseReference DbReference=fbDatabase.getReference();
 //userid is sender ID
         mchats=new ArrayList<>();
         DbReference=FirebaseDatabase.getInstance().getReference("chats");
+        //sync data with firebase
+        DbReference.keepSynced(true);
         DbReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
@@ -477,11 +488,12 @@ DatabaseReference DbReference=fbDatabase.getReference();
 
     private void status(String status){
         DbReference=FirebaseDatabase.getInstance().getReference("Users").child(fUser.getUid());
+        //Doctors value was Users
         //get online status
         HashMap<String,Object>hashMap=new HashMap<>();
         hashMap.put("status",status);
 
-       // DbReference.updateChildren(hashMap);
+      // DbReference.updateChildren(hashMap);
 
     }
 

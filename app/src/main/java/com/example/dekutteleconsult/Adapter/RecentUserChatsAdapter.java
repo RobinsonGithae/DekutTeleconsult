@@ -68,7 +68,9 @@ String lastMessage,dateTime;
 
 //here
         if (user.getImageURL().equals("default")){
-holder.profile_pic.setImageResource(R.mipmap.ic_launcher_round);
+//holder.profile_pic.setImageResource(R.mipmap.ic_launcher_round);
+            holder.profile_pic.setImageResource(R.drawable.graduate);
+
        }
 
        else {
@@ -188,6 +190,8 @@ lastMessage="default";
         FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
 
         DatabaseReference chatReference= FirebaseDatabase.getInstance().getReference("chats");
+        //sync data with firebase
+        chatReference.keepSynced(true);
 
         chatReference.addValueEventListener(new ValueEventListener() {
             @Override

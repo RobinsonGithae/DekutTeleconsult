@@ -294,9 +294,11 @@ public class StudentVideoCallActivity extends AppCompatActivity {
         // 2. One token is only valid for the channel name that
         // you use to generate this token.
         String token = getString(R.string.agora_access_token);
-        if (TextUtils.isEmpty(token) || TextUtils.equals(token, "0062b9e73d7d83848a1884afe449a6fe1abIABUIwRRfLbJz3FhMT7eyTHn8ndnKo2WXpfUqlP1nZyIheIVUyEAAAAAEABlU0aLjxTNYAEAAQCOFM1g")) {
-            token = null; // default, no token
-        }
+
+//        if (TextUtils.isEmpty(token) || TextUtils.equals(token, "0062b9e73d7d83848a1884afe449a6fe1abIAC5ej+AL/jW9ozMNTOj4Hp2X3igPWMhoeSIREgo1dWyEOIVUyEAAAAAEADok+XSaQw5YQEAAQBpDDlh")) {
+//            token = null; // default, no token
+//        }
+
         mRtcEngine.joinChannel(token, "demoChannel1", "Extra Optional Data", 0);
     }
 

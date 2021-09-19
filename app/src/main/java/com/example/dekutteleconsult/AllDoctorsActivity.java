@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.dekutteleconsult.Adapter.DoctorAdapter;
 import com.example.dekutteleconsult.Adapter.UserAdapter;
@@ -20,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class AllDoctorsActivity extends AppCompatActivity {
 
@@ -33,11 +35,28 @@ public class AllDoctorsActivity extends AppCompatActivity {
     FirebaseUser fUser;
 
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            //backbutton functionality
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_doctors);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
 
         recyclerView = (RecyclerView) findViewById(R.id.DoctorsRecyclervw);
         recyclerView.setHasFixedSize(true);
