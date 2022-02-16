@@ -16,6 +16,8 @@ The project is expected to eliminate travel costs, reduce time wasted during tra
 ![Screenshot_20210622-051205](https://user-images.githubusercontent.com/44303544/154270492-f7abde6c-2401-4c9c-8cbf-560c1d8f0531.png)
 ![Screenshot_20210622-164344](https://user-images.githubusercontent.com/44303544/154270497-10d0f143-a2aa-4ab1-b549-19a8a3f4a7c8.png)
 ![Screenshot_20210622-164400](https://user-images.githubusercontent.com/44303544/154270505-5253df04-db8a-4027-a406-0544dadf3dcb.png)
+![Screenshot_20210908-021822](https://user-images.githubusercontent.com/44303544/154274442-3c58eda7-a915-4b28-afdc-b6f428d872af.png)
+
 
 
 ##System Functionalities
@@ -23,6 +25,7 @@ The project is expected to eliminate travel costs, reduce time wasted during tra
 The system will:
 1. Register and Login both the doctor and the sick student.
 2. Enable student to doctor consultation via chat.
+
 3. Enable student to doctor consultation via video calls.
 4. Enable online prescription by the doctor to the sick student. Student will be able to view the prescription
 5. Enable reporting of emergencies by students and mapping of emergencies by the doctor/medical staff.
