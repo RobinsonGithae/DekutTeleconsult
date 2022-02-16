@@ -19,15 +19,55 @@ The project is expected to eliminate travel costs, reduce time wasted during tra
 ![Screenshot_20210908-021822](https://user-images.githubusercontent.com/44303544/154274442-3c58eda7-a915-4b28-afdc-b6f428d872af.png)
 
 
+## More System Screenshots
+![Screenshot_20220216-164041](https://user-images.githubusercontent.com/44303544/154287088-1e68391e-18c8-41c7-ac5e-cc8aebb46e44.png)
+![Screenshot_20220216-164106](https://user-images.githubusercontent.com/44303544/154287094-f6b186da-6a03-4665-b3fd-442b826513cd.png)
+![Screenshot_20220216-164146](https://user-images.githubusercontent.com/44303544/154287100-31a7d974-7ae1-402d-b1f1-bd557120645d.png)
+![Screenshot_20220216-164231](https://user-images.githubusercontent.com/44303544/154287104-1de11f70-b11d-4ac6-a808-770582f41f8a.png)
+![Screenshot_20220216-164309](https://user-images.githubusercontent.com/44303544/154287109-f3e9c154-5bea-4d99-9041-113c46f859c1.png)
+![Screenshot_20220216-164322](https://user-images.githubusercontent.com/44303544/154287116-64c0598c-bed8-4b5a-9684-194d3b9af194.png)
+![Screenshot_20220216-164340](https://user-images.githubusercontent.com/44303544/154287118-bc5463ea-a1b3-4414-ab13-86a5f5a9bed9.png)
+![Screenshot_20220216-164407](https://user-images.githubusercontent.com/44303544/154287121-f6e5e0f1-4886-4ad8-9262-d9f34c1483b8.png)
+![Screenshot_20220216-164531](https://user-images.githubusercontent.com/44303544/154287123-44b06145-6f0b-414f-898f-9fbbe19dce49.png)
+![Screenshot_20220216-165211](https://user-images.githubusercontent.com/44303544/154287127-939368f2-92f5-4c0c-a4a6-073e94c4d01b.png)
+![Screenshot_20220216-165259](https://user-images.githubusercontent.com/44303544/154287132-0e47a466-d4b4-47f6-86f9-6af165a6f98d.png)
+![Screenshot_20220216-165347](https://user-images.githubusercontent.com/44303544/154287134-f91d7b4a-59a3-4995-81fe-ef57a9dd599f.png)
+![Screenshot_20220216-163412](https://user-images.githubusercontent.com/44303544/154287138-44545031-9fa5-4b7a-b36a-baca24d12d69.png)
+![Screenshot_20220216-163424](https://user-images.githubusercontent.com/44303544/154287139-59d58e9c-7513-4ca6-8181-096c2f2abf9e.png)
+![Screenshot_20220216-163512](https://user-images.githubusercontent.com/44303544/154287080-8cfffa45-7624-4c88-9726-7170564e51d0.png)
 
-##System Functionalities
+
+
+## System Functionalities
 ---
-The system will:
-1. Register and Login both the doctor and the sick student.
-2. Enable student to doctor consultation via chat.
+The system :
+1. Registers and Logins both the doctor and the sick student.
+2. Enables student to doctor consultation via chat. 
+3. Enables student to doctor consultation via video calls.
+4. Enables online prescription by the doctor to the sick student. Student will be able to view the prescription
+5. Enables reporting of emergencies by students and mapping of emergencies by the doctor/medical staff.
 
-3. Enable student to doctor consultation via video calls.
-4. Enable online prescription by the doctor to the sick student. Student will be able to view the prescription
-5. Enable reporting of emergencies by students and mapping of emergencies by the doctor/medical staff.
+## System Requirements
+1. Android based Smartphone.
+2. Firebase Database.
+3. RTC engine.
+4. Camera enabled smartphone.
+5. Stable internet connection.
+
+
+## Libraries Used
+1. Hdodenhof Circular image View 
+2. Multidex lib.
+3. Agora rtc sdk.
+4. Toptoche searchable spinner.
+5. play-services-maps.
+6. Firebase auth, firebase-database.
+7. itext-pdf
+
+## Significance of this Project
+1. Sick students don`t need to avail themselves physically at the medical clinic hence reducing travel costs, queueing at the school and bus stops as well as the tedious journeys.
+2. Remote consultation, prescription and emergency reporting by students will most probably lead to a quick medical care for students at the University & can help save lives.
+3. The research behind this project contributes to the academic knowledge at Dedan Kimathi University of Technology.
+4. Patients (students) will be able to read the prescription(on their smartphones) they are given by the doctor easily which reduces possible instances of overdose/underdose due to poor handwriting by the doctor.
 
 ***
