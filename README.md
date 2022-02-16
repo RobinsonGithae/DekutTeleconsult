@@ -47,8 +47,8 @@ The system :
 4. Enables online prescription by the doctor to the sick student. Student will be able to view the prescription
 5. Enables reporting of emergencies by students and mapping of emergencies by the doctor/medical staff.
 
-## System Requirements
-1. Android based Smartphone.
+## System Specification
+1. Android based Smartphone.(1gb RAM, Android 6 and later versions, 8 GB ROM or greater, minimum 2G/3G capable).
 2. Firebase Database.
 3. RTC engine.
 4. Camera enabled smartphone.
@@ -64,10 +64,18 @@ The system :
 6. Firebase auth, firebase-database.
 7. itext-pdf
 
+## System Architecture
+1. Model View Controller.
+2. Thick client.
+
 ## Significance of this Project
 1. Sick students don`t need to avail themselves physically at the medical clinic hence reducing travel costs, queueing at the school and bus stops as well as the tedious journeys.
 2. Remote consultation, prescription and emergency reporting by students will most probably lead to a quick medical care for students at the University & can help save lives.
 3. The research behind this project contributes to the academic knowledge at Dedan Kimathi University of Technology.
 4. Patients (students) will be able to read the prescription(on their smartphones) they are given by the doctor easily which reduces possible instances of overdose/underdose due to poor handwriting by the doctor.
+
+
+## System Installation
+Via APK file on user`s devices.
 
 ***
